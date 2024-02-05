@@ -39,11 +39,11 @@ class SignIn extends Component {
         const response = await api.post("/auth", data, header);
           login(response.data.token);
         this.props.history.push("/app");
-        
+
       } catch (err) {
         this.setState({
           error:
-            "Houve um problema com o login, verifique suas credenciais. T.T"
+            "Houve um problema com o login, verifique suas credenciais"
         });
       }
     }

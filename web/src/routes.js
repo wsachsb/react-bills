@@ -5,6 +5,10 @@ import { isAuthenticated } from "./services/auth";
 
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import DashboardMainDashboard from "./pages/Dashboard/Main/Dashboard";
+import balance from "./pages/Dashboard/Main/Dashboard";
+import expenses from "./pages/Dashboard/Main/Dashboard";
+import revenues from "./pages/Dashboard/Main/Dashboard";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -25,6 +29,10 @@ const Routes = () => (
       <Route exact path="/" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+      <PrivateRoute path="/dashboard" component={DashboardMainDashboard} />
+      <PrivateRoute path="/balance" component={balance} />
+      <PrivateRoute path="/expenses" component={expenses} />
+      <PrivateRoute path="/revenues" component={revenues} />
       <Route path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>
