@@ -1,14 +1,13 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const MontlyBaseGetMontly = () => {
+
     const { id } = useParams();
 
     return (
-            <div>
-                MontlyBaseGetMontly {id && <div> id : {id}</div>} 
-            </div>
-        );
+        <div>handleMontlyBase {id}</div>
+    );
 }
 
 export default MontlyBaseGetMontly;
