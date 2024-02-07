@@ -9,7 +9,7 @@ const MontlyBaseGetMontly = () => {
     const [summaryList, setSummaryList] = useState([]);
 
     useEffect(() => {
-        api.get('/summary/list/mes/' + id)
+        api.get('/summary/list')
             .then((response) => {
                 setSummaryList(response.data.content);
                 console.log(summaryList);
@@ -23,8 +23,6 @@ const MontlyBaseGetMontly = () => {
                 margin: '30px auto',
             }}
         >
-
-            {JSON.stringify(summaryList)}
 
             {summaryList.map((summaryItem) => (
                 <SummaryCard summaryItem={summaryItem} />
