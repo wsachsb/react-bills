@@ -5,7 +5,8 @@ import { isAuthenticated } from "./services/auth";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import DashboardMainDashboard from "./pages/Dashboard/Main/Dashboard";
-import MonthlyBase from "./pages/MonthlyBase/Monthy";
+import MonthlyList from "./pages/MonthlyBase/MonthyList";
+import Monthly from "./pages/MonthlyBase/Monthy";
 import balance from "./pages/Dashboard/Main/Dashboard";
 import expenses from "./pages/Dashboard/Main/Dashboard";
 import revenues from "./pages/Dashboard/Main/Dashboard";
@@ -30,7 +31,8 @@ const Routes = () => (
       <Route path="/signup" component={SignUp} />
       <PrivateRoute path="/app" component={() => <h1>App</h1>} />
       <PrivateRoute path="/dashboard" component={DashboardMainDashboard} />
-      <PrivateRoute path="/monthly/:id" component={MonthlyBase} />
+      <PrivateRoute path="/monthlylist" component={MonthlyList} />
+      <PrivateRoute path="/monthly/:id" component={Monthly} />
       <PrivateRoute path="/balance" component={balance} />
       <PrivateRoute path="/expenses" component={expenses} />
       <PrivateRoute path="/revenues" component={revenues} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
-import SummaryCard from "../../components/Summary/Card/Card";
+import SummaryCard from "../../Components/Summary/Card/Card";
 
 const MontlyBaseGetMontly = () => {
 
