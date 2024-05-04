@@ -1,8 +1,10 @@
 import React from "react";
+import Menu from "../../../Components/Menu/index";
+
 
 const DashboardMainDashboard = () => {
     return (
-            <h1>dashboard</h1>
+            <Menu />
     )
 }
 
