@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
-import SummaryCard from "../../Components/Summary/Card/Card";
+import SummaryCard from "../Summary/Card/Card";
 
 const MontlyBaseGetMontly = () => {
 
@@ -27,9 +27,6 @@ const MontlyBaseGetMontly = () => {
             {summaryList.map((summaryItem) => (
                 <SummaryCard summaryItem={summaryItem} />
             ))}
-
-
-
 
         </div>
     );
