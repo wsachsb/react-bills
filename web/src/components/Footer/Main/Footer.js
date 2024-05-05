@@ -4,8 +4,11 @@ import Menu from "../../Menu/index";
 
 const DashboardMainDashboard = () => {
     return (
-            <Menu />
-    )
+        <footer>
+          <p>This is the Footer</p>
+          {/* Add footer content here */}
+        </footer>
+      );
 }
 
 export default DashboardMainDashboard;
