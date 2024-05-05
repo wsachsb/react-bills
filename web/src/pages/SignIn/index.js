@@ -37,12 +37,8 @@ class SignIn extends Component {
         }
 
         const response = await api.post("/auth", data, header);
-        login(response.data.token);
-        // Pass response object as state when navigating to /dashboard
-        this.props.history.push({
-          pathname: "/dashboard",
-          state: { response }
-        });
+          login(response.data.token);
+        this.props.history.push("/dashboard");
 
       } catch (err) {
         this.setState({
