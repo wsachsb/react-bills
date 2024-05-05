@@ -10,10 +10,11 @@ const SummaryCard = ({ summaryItem }) => (
       className="promotion-card__image"
     />
     <div className="promotion-card__info">
-      <h1 className="promotion-card__title">{summaryItem.mes.nome_mes}</h1>
+      <h1 className="promotion-card__title">{'Resumo mês: ' + summaryItem.mes.mes}</h1>
       <span className="promotion-card__price">R$ {summaryItem.totalReceitas}</span>
-
+      <br></br>
       <span className="promotion-card__price"> R$ {summaryItem.totalDespesas}</span>
+      
       <footer className="promotion-card__footer">
         {summaryItem.length > 0 && (
           <div className="promotion-card__comment">
@@ -22,7 +23,7 @@ const SummaryCard = ({ summaryItem }) => (
         )}
         <div className="promotion-card__comments-count">
           {summaryItem.mes.length}{' '}
-          {summaryItem.mes.length > 1 ? 'Mês Referência' : 'Selecione mês referência'}
+          {summaryItem.mes.length > 1 ? 'Mês Referência: ' + summaryItem.mes.nome_mes : 'Mês referência: ' + summaryItem.mes.nome_mes}
         </div>
         <a
           href={summaryItem.mes.nome_mes}
@@ -30,10 +31,11 @@ const SummaryCard = ({ summaryItem }) => (
           rel="noopener noreferrer"
           className="promotion-card__link"
         >
-          IR PARA O SITE
+          CLIQUE PARA EDITAR
         </a>
       </footer>
     </div>
+    <br></br><br></br><br></br>
   </div>
 );
 

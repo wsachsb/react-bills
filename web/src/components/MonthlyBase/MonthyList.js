@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
-import SummaryCard from "../../Components/Summary/Card/Card";
+import SummaryCard from "../Summary/Card/Card";
 
 const MontlyBaseGetMontly = () => {
 
@@ -9,7 +9,7 @@ const MontlyBaseGetMontly = () => {
     const [summaryList, setSummaryList] = useState([]);
 
     useEffect(() => {
-        api.get('/summary/list/mes/' + id)
+        api.get('/summary/list')
             .then((response) => {
                 setSummaryList(response.data.content);
                 console.log(summaryList);
@@ -24,14 +24,9 @@ const MontlyBaseGetMontly = () => {
             }}
         >
 
-            {JSON.stringify(summaryList)}
-
             {summaryList.map((summaryItem) => (
                 <SummaryCard summaryItem={summaryItem} />
             ))}
-
-
-
 
         </div>
     );

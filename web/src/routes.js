@@ -4,12 +4,12 @@ import { isAuthenticated } from "./services/auth";
 
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import DashboardMainDashboard from "./pages/Dashboard/Main/Dashboard";
-import MonthlyList from "./pages/MonthlyBase/MonthyList";
-import Monthly from "./pages/MonthlyBase/Monthy";
-import balance from "./pages/Dashboard/Main/Dashboard";
-import expenses from "./pages/Dashboard/Main/Dashboard";
-import revenues from "./pages/Dashboard/Main/Dashboard";
+import DashboardMainDashboard from "./Components/Dashboard/Main/Dashboard";
+import MonthlyList from "./Components/MonthlyBase/MonthyList";
+import Monthly from "./Components/MonthlyBase/Monthy";
+import balance from "./Components/Dashboard/Main/Dashboard";
+import expenses from "./Components/Dashboard/Main/Dashboard";
+import revenues from "./Components/Dashboard/Main/Dashboard";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
