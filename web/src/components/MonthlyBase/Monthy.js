@@ -39,22 +39,12 @@ const MontlyBaseGetMontly = () => {
                 margin: '30px auto',
             }}
         >
-            <br></br>
-            <Header />
-            <br></br><br></br><br></br>
-
             {summaryList.map((summaryItem) => (
                 <SummaryCard summaryItem={summaryItem} />
             ))}
 
             <br></br>
             {JSON.stringify(summaryList)}
-
-            <br></br>
-            <br></br>
-            <br></br>
-            <Footer />
-
         </div>
     );
 };

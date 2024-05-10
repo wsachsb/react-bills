@@ -1,4 +1,5 @@
 import React from "react";
+import MonthlyList from "../../../Components/MonthlyBase/MonthyList";
 import Header from '../../../Components/Header/Main/Header';
 import Footer from '../../../Components/Footer/Main/Footer';
 
@@ -13,8 +14,8 @@ const DashboardMainDashboard = () => {
           <div>
             {/* Main content of the page */}
             <h1>Welcome to my website!</h1>
-            <p>This is the main page content.</p>
-            
+            <p>MonthlyList.</p>
+            <MonthlyList />
           </div>
           <br></br>
           <br></br>

@@ -5,7 +5,6 @@ import SummaryCard from "../Summary/Card/Card";
 
 const MontlyBaseGetMontly = () => {
 
-    const { id } = useParams();
     const [summaryList, setSummaryList] = useState([]);
 
     useEffect(() => {

@@ -1,14 +1,15 @@
 import React from "react";
-import Menu from "../../Menu/index";
+import Menu from "../../Menu/Menu";
 
 
 const DashboardMainDashboard = () => {
-    return (
-        <footer>
-          <p>This is the Footer</p>
-          {/* Add footer content here */}
-        </footer>
-      );
+  return (
+    <footer>
+      <div style={{ backgroundColor: '#aaa' }}>
+        Footer
+      </div>
+    </footer>
+  );
 }
 
 export default DashboardMainDashboard;
