@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
 import SummaryCard from "../Summary/Card/Card";
 
-const MontlyBaseGetMontly = () => {
-
+const MonthyList = ({ selectedItem }) => {
     const [summaryList, setSummaryList] = useState([]);
 
     useEffect(() => {
-        api.get('/summary/list')
-            .then((response) => {
-                setSummaryList(response.data.content);
-                console.log(summaryList);
-            });
-    }, []);
+        console.log("Selected Item antes:", selectedItem);
+
+        if (selectedItem && selectedItem.id && selectedItem.year) {
+            const { id, year } = selectedItem;
+            api.get(`/dashboard/mes/${id}&${year}`)
+                .then((response) => {
+                    //console.log("API Response for Summary:", response.data); // Log API response
+                    setSummaryList(response.data.content);
+                })
+                .catch((error) => {
+                    console.error('There was an error fetching the summary list!', error);
+                });
+        } else {
+            setSummaryList([]);
+        }
+    }, [selectedItem]);
 
     return (
-        <div
-            style={{
-                maxWidth: 800,
-                margin: '30px auto',
-            }}
-        >
-
+        <div style={{ maxWidth: 800, margin: '30px auto' }}>
             {summaryList.map((summaryItem) => (
-                <SummaryCard summaryItem={summaryItem} />
+                <SummaryCard key={summaryItem.id} summaryItem={summaryItem} />
             ))}
-
         </div>
     );
 };
 
-export default MontlyBaseGetMontly;
+export default MonthyList;
