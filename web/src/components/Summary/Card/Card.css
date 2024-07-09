@@ -18,10 +18,16 @@
   color: #2C3E50;
 }
 
-.promotion-card__price {
+.promotion-card__revenues {
   font-size: 26px;
   font-weight: 700;
   color: #3498DB;
+}
+
+.promotion-card__expenses {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e23838;
 }
 
 .promotion-card__footer {

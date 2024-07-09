@@ -13,10 +13,11 @@ const SummaryCard = ({ summaryItem }) => (
     <div className="promotion-card__info">
       <h1 className="promotion-card__title">{'Resumo mês: ' + summaryItem.mes}</h1>
 
-      <span className="promotion-card__price">{formatCurrency(summaryItem.totalReceitas)}</span>
+      <span className="promotion-card__revenues">{formatCurrency(summaryItem.totalReceitas)}</span>
       <br></br>
-      <span className="promotion-card__price">{formatCurrency(summaryItem.totalDespesas)}</span>
-
+      <span className="promotion-card__expenses">{formatCurrency(summaryItem.totalDespesas)}</span>
+      <br></br>
+      <span className="promotion-card__price">{formatCurrency(summaryItem.totalReceitas - summaryItem.totalDespesas)}</span>
       <br></br>
       {JSON.stringify(summaryItem)}
 
