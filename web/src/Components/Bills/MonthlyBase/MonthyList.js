@@ -11,8 +11,8 @@ const MonthyList = ({ selectedItem }) => {
         console.log("Selected Item antes:", selectedItem);
 
         if (selectedItem && selectedItem.id && selectedItem.year) {
-            const { id, year } = selectedItem;
-            api.get(`/dashboard/mes/${id}&${year}`)
+            const { mesid, year } = selectedItem;
+            api.get(`/dashboard/mes/${mesid}&${year}`)
                 .then((response) => {
                     console.log("API Response for Summary:", response.data); // Log API response
                     setSummaryList(response.data.content);

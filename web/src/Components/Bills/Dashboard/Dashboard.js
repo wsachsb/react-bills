@@ -36,15 +36,10 @@ const Dashboard = () => {
   useEffect(() => {
     console.log("Selected Item:", selectedItem);
     setButtonVisible(!!selectedItem);
-
-    if (selectedItem) {
-      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
-    }
   }, [selectedItem]);
 
   const handleRevenuesClick = () => {
     if (selectedItem) {
-      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
       navigate(`/revenues`, {
         state: { selectedItem }
       });
@@ -53,7 +48,6 @@ const Dashboard = () => {
 
   const handleExpensesClick = () => {
     if (selectedItem) {
-      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
       navigate(`/expenses`, {
         state: { selectedItem }
       });
@@ -62,7 +56,6 @@ const Dashboard = () => {
 
   const handleBalancesClick = () => {
     if (selectedItem) {
-      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
       navigate(`/balance`, {
         state: { selectedItem }
       });
