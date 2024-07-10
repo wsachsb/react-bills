@@ -3,17 +3,17 @@ import { useLocation } from "react-router-dom";
 import api from "../../../services/api";
 import SummaryCard from "../Summary/Card/Card";
 
-const Revenues = () => {
+const Balances = () => {
   const [summaryList, setSummaryList] = useState([]);
   const location = useLocation();
   const { selectedItem } = location.state || {}; // Obtenha selectedItem do estado
 
   useEffect(() => {
-    console.log("Revenues:", selectedItem);
+    console.log("Balances:", selectedItem);
 
     if (selectedItem && selectedItem.id && selectedItem.year) {
       const { id, year } = selectedItem;
-      api.get(`/revenues/list/mes/${id}&${year}`)
+      api.get(`/balance/list/mes/${id}&${year}`)
         .then((response) => {
           setSummaryList(response.data.content);
         })
@@ -34,4 +34,4 @@ const Revenues = () => {
   );
 };
 
-export default Revenues;
+export default Balances;

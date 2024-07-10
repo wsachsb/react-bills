@@ -5,6 +5,8 @@ import SignIn from "./Components/pages/SignIn";
 import DashboardMainDashboard from "./Components/Bills/Dashboard/Dashboard";
 import MonthlyList from "./Components/Bills/MonthlyBase/MonthyList";
 import Revenues from "./Components/Bills/revenues/revenues";
+import Expenses from "./Components/Bills/expenses/expenses";
+import Balances from "./Components/Bills/balances/balances";
 import Monthly from "./Components/Bills/MonthlyBase/Monthy";
 import PrivateRoute from "./PrivateRoute";
 import Layout from './Components/pages/Layout/Layout';
@@ -45,11 +47,11 @@ const AppRoutes = () => (
         }
       />
       <Route
-        path="/balance"
+        path="/balances"
         element={
           <PrivateRoute>
             <Layout>
-              <Revenues />
+              <Balances />
             </Layout>
           </PrivateRoute>
         }
@@ -59,7 +61,7 @@ const AppRoutes = () => (
         element={
           <PrivateRoute>
             <Layout>
-              <Revenues />
+              <Expenses />
             </Layout>
           </PrivateRoute>
         }

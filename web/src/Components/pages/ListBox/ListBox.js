@@ -15,7 +15,7 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
                 onChange={handleChange}
                 value={selectedItem ? selectedItem.id : ""}
             >
-                <option value="" disabled>Select an option</option>
+                <option value="" disabled>Selecione o mês</option>
                 {items.map((item, index) => (
                     <option key={index} value={item.id}>
                         {item.nome_mes}
