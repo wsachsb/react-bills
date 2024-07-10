@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [listBoxItems, setListBoxItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [listBoxLoaded, setListBoxLoaded] = useState(false);
-  const [buttonVisible, setButtonVisible] = useState(false); // Adicione este estado
+  const [buttonVisible, setButtonVisible] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,20 +18,33 @@ const Dashboard = () => {
         const items = response.data.content;
         setListBoxItems(items);
         setListBoxLoaded(true);
+
+        // Carrega a opção selecionada do localStorage
+        const savedSelectedItem = localStorage.getItem('selectedItem');
+        if (savedSelectedItem) {
+          const parsedItem = JSON.parse(savedSelectedItem);
+          setSelectedItem(parsedItem);
+        }
       })
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
+        alert('Sessão expirou, faça um novo login');
+        navigate('/');
       });
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
-    //console.log("Selecione o mês: ", selectedItem);
-    // Verifica se há um item selecionado e define a visibilidade do botão
+    console.log("Selected Item:", selectedItem);
     setButtonVisible(!!selectedItem);
+
+    if (selectedItem) {
+      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
+    }
   }, [selectedItem]);
 
   const handleRevenuesClick = () => {
     if (selectedItem) {
+      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
       navigate(`/revenues`, {
         state: { selectedItem }
       });
@@ -40,6 +53,7 @@ const Dashboard = () => {
 
   const handleExpensesClick = () => {
     if (selectedItem) {
+      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
       navigate(`/expenses`, {
         state: { selectedItem }
       });
@@ -48,7 +62,8 @@ const Dashboard = () => {
 
   const handleBalancesClick = () => {
     if (selectedItem) {
-      navigate(`/balances`, {
+      localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
+      navigate(`/balance`, {
         state: { selectedItem }
       });
     }
@@ -69,7 +84,6 @@ const Dashboard = () => {
           <MonthyList selectedItem={selectedItem} />
         )}
       </div>
-      {/* Botões visíveis apenas se selectedItem estiver definido */}
       {buttonVisible && (
         <div className="button-container">
           <button 
