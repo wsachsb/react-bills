@@ -1,0 +1,18 @@
+.account-menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item {
+  min-width: 100px;
+}
+
+.avatar-button {
+  margin-left: 16px; /* ml: 2 equivalente */
+}

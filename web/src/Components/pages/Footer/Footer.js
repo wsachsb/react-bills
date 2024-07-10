@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardMainDashboard = () => {
+const Footer = () => {
   return (
     <footer>
       <div style={{ backgroundColor: '#aaa' }}>
@@ -10,4 +10,4 @@ const DashboardMainDashboard = () => {
   );
 }
 
-export default DashboardMainDashboard;
+export default Footer;

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../services/api";
-import Header from '../../../Components/Header/Main/Header';
-import Footer from '../../../Components/Footer/Main/Footer';
-import MonthyList from '../../../Components/MonthlyBase/MonthyList';
-import ListBox from '../../../Components/ListBox/ListBox';
+import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
+import ListBox from '../../../Components/pages/ListBox/ListBox';
 
 const DashboardMainDashboard = () => {
   const [listBoxItems, setListBoxItems] = useState([]);
@@ -13,7 +11,7 @@ const DashboardMainDashboard = () => {
   useEffect(() => {
     api.get('/month/list')
       .then(response => {
-        console.log("API Response:", response.data);
+        //console.log("API Response:", response.data);
         const items = response.data.content;
         setListBoxItems(items);
         setListBoxLoaded(true);
@@ -29,9 +27,6 @@ const DashboardMainDashboard = () => {
 
   return (
     <div>
-      <br />
-      <Header />
-      <br /><br /><br />
       <div>
         <h1>Welcome to my Finance!</h1>
         <p>Summary Month</p>
@@ -48,8 +43,6 @@ const DashboardMainDashboard = () => {
           />
         )}
       </div>
-      <br /><br /><br />
-      <Footer />
     </div>
   );
 };

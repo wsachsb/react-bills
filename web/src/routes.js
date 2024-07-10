@@ -1,44 +1,82 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { isAuthenticated } from "./services/auth";
+import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router-dom";
+import SignUp from "./Components/pages/SignUp";
+import SignIn from "./Components/pages/SignIn";
+import DashboardMainDashboard from "./Components/Bills/Dashboard/Dashboard";
+import MonthlyList from "./Components/Bills/MonthlyBase/MonthyList";
+import Revenues from "./Components/Bills/revenues/revenues";
+import Monthly from "./Components/Bills/MonthlyBase/Monthy";
+import PrivateRoute from "./PrivateRoute";
+import Layout from './Components/pages/Layout/Layout';
 
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import DashboardMainDashboard from "./Components/Dashboard/Main/Dashboard";
-import MonthlyList from "./Components/MonthlyBase/MonthyList";
-import Monthly from "./Components/MonthlyBase/Monthy";
-import balance from "./Components/Dashboard/Main/Dashboard";
-import expenses from "./Components/Dashboard/Main/Dashboard";
-import revenues from "./Components/Dashboard/Main/Dashboard";
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
-    }
-  />
-);
-
-const Routes = () => (
+const AppRoutes = () => (
   <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <PrivateRoute path="/app" component={() => <h1>App</h1>} />
-      <PrivateRoute path="/dashboard" component={DashboardMainDashboard} />
-      <PrivateRoute path="/monthlylist" component={MonthlyList} />
-      <PrivateRoute path="/monthly/:id" component={Monthly} />
-      <PrivateRoute path="/balance" component={balance} />
-      <PrivateRoute path="/expenses" component={expenses} />
-      <PrivateRoute path="/revenues" component={revenues} />
-      <Route path="*" component={() => <h1>Page not found</h1>} />
-    </Switch>
+    <RouterRoutes>
+      <Route path="/" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <DashboardMainDashboard />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/monthlylist"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <MonthlyList />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/monthly/:id"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Monthly />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/balance"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Revenues />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/expenses"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Revenues />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/revenues"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Revenues />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route path="*" element={<h1>Page not found</h1>} />
+    </RouterRoutes>
   </BrowserRouter>
 );
 
-export default Routes;
+export default AppRoutes;

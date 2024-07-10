@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -11,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import './Menu.css';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,16 +23,29 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/dashboard');
+  };
+
+  const handleMonthlyListClick = () => {
+    navigate('/revenues');
+  };
+
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>Home</Typography>
-        <Typography sx={{ minWidth: 100 }}>MonthlyList</Typography>
+      <Box className="account-menu-container">
+        <Box className="menu-items">
+          <Typography className="menu-item" onClick={handleHomeClick}>Home</Typography>
+          <Typography className="menu-item" onClick={handleMonthlyListClick}>Revenues</Typography>
+        </Box>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2 }}
+            className="avatar-button"
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
