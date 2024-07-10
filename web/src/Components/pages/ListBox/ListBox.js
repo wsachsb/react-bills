@@ -34,9 +34,9 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
         {items
           .sort((a, b) => a.mesid - b.mesid)
           .map((item, index) => (
-            <option key={index} value={item.id}>
-              {item.nome_mes}
-            </option>
+        <option key={index} value={item.id}>
+          {item.nome_mes}
+        </option>
           ))}
       </select>
     </div>

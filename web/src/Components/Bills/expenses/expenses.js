@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import api from "../../../services/api";
 import SummaryCard from "../Summary/Card/Card";
 
@@ -7,18 +7,18 @@ const Expenses = () => {
   const [summaryList, setSummaryList] = useState([]);
   const location = useLocation();
   const { selectedItem } = location.state || {}; // Obtenha selectedItem do estado
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Expenses:", selectedItem);
-
-    if (selectedItem && selectedItem.id && selectedItem.year) {
-      const { id, year } = selectedItem;
-      api.get(`/expenses/list/mes/${id}&${year}`)
+    if (selectedItem && selectedItem.mesid && selectedItem.year) {
+      const { mesid, year } = selectedItem;
+      api.get(`/expenses/list/mes/${mesid}&${year}`)
         .then((response) => {
           setSummaryList(response.data.content);
         })
         .catch((error) => {
-          console.error('There was an error fetching the summary list!', error);
+          alert('Sessão expirou, faça um novo login');
+          navigate('/');
         });
     } else {
       setSummaryList([]);

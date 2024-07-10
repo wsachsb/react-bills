@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   const handleBalancesClick = () => {
     if (selectedItem) {
-      navigate(`/balance`, {
+      navigate(`/balances`, {
         state: { selectedItem }
       });
     }

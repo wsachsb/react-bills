@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 10px; /* Adicionado espaçamento inferior */
+  border-bottom: 1px solid #e0e0e0; /* Linha horizontal clara */
 }
 
 .menu-items {
@@ -11,6 +13,15 @@
 
 .menu-item {
   min-width: 100px;
+  padding: 10px 20px; /* Espaçamento interno para estilo melhorado */
+  cursor: pointer;
+  font-weight: bold; /* Negrito para melhor visibilidade */
+  color: #1976d2; /* Cor do texto */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.menu-item:hover {
+  background-color: #e3f2fd; /* Cor de fundo ao passar o mouse */
 }
 
 .avatar-button {
