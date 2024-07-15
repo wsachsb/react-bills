@@ -10,7 +10,6 @@ const MontlyBaseGetMontly = () => {
         api.get('month/list')
             .then((response) => {
                 setSummaryList(response.data.content);
-                console.log(summaryList);
             });
     }, []);
 

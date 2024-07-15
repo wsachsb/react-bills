@@ -10,8 +10,6 @@ const Balances = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Balances:", selectedItem);
-
     if (selectedItem && selectedItem.id && selectedItem.year) {
       //const { mesid, year } = selectedItem;
       api.get(`/balance/list`)

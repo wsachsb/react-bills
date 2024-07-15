@@ -34,7 +34,6 @@ const Dashboard = () => {
   }, [navigate]);
 
   useEffect(() => {
-    console.log("Selected Item:", selectedItem);
     setButtonVisible(!!selectedItem);
   }, [selectedItem]);
 

@@ -1,0 +1,22 @@
+.add-revenue-button {
+    background-color: #28a745; /* Verde */
+    color: #fff;
+    border: none;
+    padding: 20px; /* Aumenta o tamanho do botão */
+    border-radius: 50%; /* Torna o botão redondo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    bottom: 35px; /* Aumenta a distância do fundo */
+    right: 30px; /* Distância da borda direita */
+    font-size: 36px; /* Aumenta o tamanho do ícone */
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .add-revenue-button:hover {
+    background-color: #218838; /* Verde mais escuro */
+  }
+  

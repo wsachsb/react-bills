@@ -32,10 +32,6 @@ export default function AccountMenu() {
     navigate('/dashboard');
   };
 
-  const handleMonthlyListClick = () => {
-    navigate('/revenues');
-  };
-
   return (
     <React.Fragment>
       <Box className="account-menu-container">
