@@ -85,6 +85,7 @@ const AddRevenueForm = ({ setSummaryList, closeModal, mesid, year }) => {
                         placeholder="Data de recebimento da receita"
                         value={dtrecebimento}
                         onChange={(e) => setDtrecebimento(e.target.value)}
+                        onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                         required
                     />
                 </div>

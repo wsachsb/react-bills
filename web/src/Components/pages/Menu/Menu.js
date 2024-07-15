@@ -37,7 +37,7 @@ export default function AccountMenu() {
       <Box className="account-menu-container">
         <Box className="menu-items">
           <Typography className="menu-item" onClick={handleHomeClick}>Home</Typography>
-          {/* <Typography className="menu-item" onClick={handleMonthlyListClick}>Revenues</Typography> */}
+          <Typography className="menu-item" onClick={handleHomeClick}>About</Typography>
         </Box>
         <Tooltip title="Account settings">
           <IconButton

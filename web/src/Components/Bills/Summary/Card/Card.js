@@ -18,13 +18,10 @@ const SummaryCard = ({ summaryItem }) => (
       <span className="promotion-card__expenses">{formatCurrency(summaryItem.totalDespesas)}</span>
       <br></br>
       <span className="promotion-card__price">{formatCurrency(summaryItem.totalReceitas - summaryItem.totalDespesas)}</span>
-      <br></br>
-      {JSON.stringify(summaryItem)}
 
       <footer className="promotion-card__footer">
       </footer>
     </div>
-    <br></br><br></br><br></br>
   </div>
 );
 

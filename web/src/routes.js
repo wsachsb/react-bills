@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router-dom";
-import SignUp from "./Components/pages/SignUp";
-import SignIn from "./Components/pages/SignIn";
+import SignUp from "./Components/pages/SignUp/SignUp";
+import SignIn from "./Components/pages/SignIn/SignIn";
 import DashboardMainDashboard from "./Components/Bills/Dashboard/Dashboard";
 import MonthlyList from "./Components/Bills/MonthlyBase/MonthyList";
 import Revenues from "./Components/Bills/revenues/revenues";

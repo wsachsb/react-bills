@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../../assets/airbnb-logo.svg";
+import Logo from "../../../assets/bills-logo.svg";
 import api from "../../../services/api";
 import { login } from "../../../services/auth";
 import { Form, Container } from "./styles";
@@ -45,7 +45,7 @@ const SignIn = () => {
   return (
     <Container>
       <Form onSubmit={handleSignIn}>
-        <img src={Logo} alt="Airbnb logo" />
+        <img src={Logo} alt="Bills logo" />
         {error && <p>{error}</p>}
         <input
           type="email"
