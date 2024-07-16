@@ -8,13 +8,10 @@ const MonthyList = ({ selectedItem }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("Selected Item antes:", selectedItem);
-
         if (selectedItem && selectedItem.id && selectedItem.year) {
             const { mesid, year } = selectedItem;
             api.get(`/dashboard/mes/${mesid}&${year}`)
                 .then((response) => {
-                    console.log("API Response for Summary:", response.data); // Log API response
                     setSummaryList(response.data.content);
                 })
                 .catch((error) => {

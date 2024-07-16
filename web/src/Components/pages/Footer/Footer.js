@@ -2,11 +2,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="dashboard-footer">
       <div style={{ backgroundColor: '#aaa' }}>
-        Footer
+        <p>&copy; 2024 My Dashboard. All rights reserved.</p>
       </div>
-    </footer>
+    </footer >
   );
 }
 

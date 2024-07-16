@@ -62,9 +62,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Bem vindo(a) ao Dashboard!</h1>
+    <div className="dashboard-container">
+      <div className="dashboard-content-container">
+        <h1>Bem-vindo(a) ao Dashboard!</h1>
         {listBoxLoaded && (
           <ListBox
             items={listBoxItems}
@@ -77,7 +77,7 @@ const Dashboard = () => {
         )}
       </div>
       {buttonVisible && (
-        <div className="button-container">
+        <div className="dashboard-button-container">
           <button 
             onClick={handleRevenuesClick}
             className="dashboard-button"
@@ -98,6 +98,9 @@ const Dashboard = () => {
           </button>
         </div>
       )}
+      <footer className="dashboard-footer">
+        <p>&copy; 2024 My Dashboard. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

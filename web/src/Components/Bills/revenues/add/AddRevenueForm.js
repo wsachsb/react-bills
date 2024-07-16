@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import addRevenues from './addRevenues';
+import AddRevenues from './AddRevenues.js';
 import './AddRevenueForm.css';
 
 const AddRevenueForm = ({ setSummaryList, closeModal, mesid, year }) => {
@@ -42,7 +42,7 @@ const AddRevenueForm = ({ setSummaryList, closeModal, mesid, year }) => {
         };
 
         try {
-            await addRevenues(dataToSubmit, setSummaryList, navigate);
+            await AddRevenues(dataToSubmit, setSummaryList, navigate);
             console.log('Receita adicionada com sucesso');
             closeModal();
         } catch (error) {
