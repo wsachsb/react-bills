@@ -1,0 +1,177 @@
+.promotion-card {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+.promotion-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.button-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background: #0056b3;
+}
+
+.delete-button {
+    background: #bbb6b6;
+}
+
+.delete-button:hover {
+    background: #666;
+}
+
+.card-content {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 1px;
+    width: calc(100% - 95px);
+    box-sizing: border-box;
+}
+
+.field-container {
+    display: flex;
+    align-items: center;
+    margin: 1px;
+}
+
+.field-label {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    margin-right: 10px; /* Espaço entre label e input */
+    font-weight: bold;
+    width: 200px; /* Largura fixa para manter alinhamento das labels */
+}
+
+.promotion-card__info,
+input[type="text"] {
+    border: 1px solid #ddd;
+    padding: 8px 12px; /* Reduzido o padding para se ajustar ao tamanho da fonte */
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    font-size: 14px; /* Reduzido de 16px para 14px */
+    color: #333;
+    border-radius: 5px;
+    outline: none;
+    cursor: default; /* Indica que o campo é somente leitura */
+}
+
+input[type="text"]:disabled {
+    background-color: #e9ecef; /* Cor de fundo para inputs desativados */
+}
+
+.confirm-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.confirm-modal p {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.confirm-yes {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-yes:hover {
+    background: #0056b3;
+}
+
+.confirm-no {
+    background: none;
+    color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.confirm-no:hover {
+    background: #a4a5a7;
+}
+
+.add-revenue-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 35px;
+  right: 30px;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.add-revenue-button:hover {
+  background-color: #0056b3;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

@@ -1,0 +1,47 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard-content-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.dashboard-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+  background-color: #0056b3;
+}
+
+.dashboard-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-footer {
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+}

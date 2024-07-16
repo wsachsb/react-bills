@@ -1,0 +1,73 @@
+.edit-revenue-form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button {
+    background: #0056b3; /* Cor primária */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer; /* Cursor apropriado para indicar que é clicável */
+    user-select: none; /* Evita que o botão seja selecionável */
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background: #004494; /* Cor de hover */
+}
+
+.cancel-button {
+    background: #6c757d; /* Cor secundária */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer; /* Cursor apropriado para indicar que é clicável */
+    user-select: none; /* Evita que o botão seja selecionável */
+    transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+    background: #5a6268; /* Cor de hover */
+}
+
+.edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}

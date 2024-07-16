@@ -1,0 +1,83 @@
+.add-revenue-form {
+  background-color: #fff;
+  padding: 30px; /* Aumente o padding para mais espaço interno */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 700px; /* Aumente a largura máxima do modal */
+  margin: 0 auto;
+  position: fixed; /* Fica fixo na tela */
+  top: 50%; /* Posiciona verticalmente no meio */
+  left: 50%; /* Posiciona horizontalmente no meio */
+  transform: translate(-50%, -50%); /* Ajusta para o centro da tela */
+  z-index: 1000; /* Garante que o modal está acima de outros conteúdos */
+  display: block; /* Exibe o modal quando a classe 'open' é adicionada */
+  width: 100%; /* Faz o modal ocupar toda a largura disponível até a largura máxima */
+}
+
+.add-revenue-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.add-revenue-form div {
+  margin-bottom: 16px;
+}
+
+.add-revenue-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.add-revenue-form input,
+.add-revenue-form textarea {
+  width: 100%;
+  padding: 12px; /* Aumente o padding dos campos para mais espaço */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-revenue-form input[type="date"] {
+  padding: 10px; /* Aumente o padding para mais espaço */
+}
+
+.add-revenue-form textarea {
+  resize: vertical;
+}
+
+.add-revenue-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 18px; /* Aumente o padding dos botões */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.add-revenue-form button:hover {
+  background-color: #0056b3;
+}
+
+.add-revenue-form button:last-of-type {
+  background-color: #6c757d;
+}
+
+.add-revenue-form button:last-of-type:hover {
+  background-color: #5a6268;
+}
+
+/* Estilos para o fundo do modal */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Garante que o fundo está atrás do modal */
+}

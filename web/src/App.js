@@ -1,6 +1,11 @@
 import React from "react";
-import Routes from "./routes";
-import "./styles/global";
+import { UserProvider } from "../src/Components/pages/UserContext/UserContext";
+import AppRoutes from "./routes";
 
-const App = () => <Routes />;
+const App = () => (
+  <UserProvider>
+    <AppRoutes />
+  </UserProvider>
+);
+
 export default App;
