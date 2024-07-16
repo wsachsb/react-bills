@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import deleteRevenue from './delete/deleteRevenue';
-import EditRevenueForm from './update/EditRevenueForm';
-import './revenuesCard.css';
+import deleteExpense from '../delete/deleteExpense';
+import EditExpenseForm from '../update/EditExpenseForm';
+import './expensesCard';
 
 const formatCurrency = (value) => {
     if (value == null) {
@@ -10,7 +10,7 @@ const formatCurrency = (value) => {
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 
-const RevenueCard = ({ summaryItem, refreshList }) => {
+const ExpenseCard = ({ summaryItem, refreshList }) => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -20,12 +20,12 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
 
     const handleConfirmDelete = async () => {
         try {
-            await deleteRevenue(summaryItem.id);
+            await deleteExpense(summaryItem.id);
             if (refreshList) {
                 refreshList();
             }
         } catch (error) {
-            console.error('Erro ao deletar receita:', error);
+            console.error('Erro ao deletar expense:', error);
         } finally {
             setShowConfirm(false);
         }
@@ -51,24 +51,35 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                     <input
                         className="promotion-card__info"
                         type="text"
-                        value={summaryItem.nomeReceita}
-                        readOnly
+                        value={summaryItem.nomeConta}
                     />
                 </div>
                 <div className="field-container">
-                    <label className="field-label">Valor à receber:</label>
+                    <label className="field-label">Valor à pagar:</label>
                     <input
                         type="text"
                         value={formatCurrency(summaryItem.valor)}
-                        readOnly
                     />
                 </div>
                 <div className="field-container">
-                    <label className="field-label">Data à receber:</label>
+                    <label className="field-label">Data de Vencimento:</label>
                     <input
                         type="text"
-                        value={summaryItem.dtrecebimento}
-                        readOnly
+                        value={summaryItem.dtvencimento}
+                    />
+                </div>
+                <div className="field-container">
+                    <label className="field-label">Data de Pagamento:</label>
+                    <input
+                        type="text"
+                        value={summaryItem.dtpagamento}
+                    />
+                </div>                
+                <div className="field-container">
+                    <label className="field-label">Situacao:</label>
+                    <input
+                        type="text"
+                        value={summaryItem.situacao}
                     />
                 </div>
                 <div className="field-container">
@@ -76,7 +87,13 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                     <input
                         type="text"
                         value={summaryItem.observacoes}
-                        readOnly
+                    />
+                </div>
+                <div className="field-container">
+                    <label className="field-label">Categoria:</label>
+                    <input
+                        type="text"
+                        value={summaryItem.categoria}
                     />
                 </div>
             </div>
@@ -88,8 +105,8 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                 </div>
             )}
             {isEditing && (
-                <EditRevenueForm
-                    revenue={summaryItem}
+                <EditExpenseForm
+                    expense={summaryItem}
                     closeModal={handleCloseEditForm}
                     refreshList={refreshList}
                 />
@@ -98,4 +115,4 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
     );
 };
 
-export default RevenueCard;
+export default ExpenseCard;

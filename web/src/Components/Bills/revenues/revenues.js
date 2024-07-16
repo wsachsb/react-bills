@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import api from "../../../services/api";
 import AddRevenueForm from "./add/AddRevenueForm";
-import RevenueCard from './revenuesCard';
+import RevenueCard from './revenuesCard/revenuesCard';
 import './Revenues.css';
 
 const Revenues = () => {

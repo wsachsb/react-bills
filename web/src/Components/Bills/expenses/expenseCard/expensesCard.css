@@ -43,11 +43,11 @@
 }
 
 .delete-button {
-    background: #dc3545;
+    background: #bbb6b6;
 }
 
 .delete-button:hover {
-    background: #c82333;
+    background: #666;
 }
 
 .card-content {
@@ -111,7 +111,7 @@ input[type="text"]:disabled {
 }
 
 .confirm-yes {
-    background: #28a745;
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -123,7 +123,7 @@ input[type="text"]:disabled {
 }
 
 .confirm-yes:hover {
-    background: #218838;
+    background: #0056b3;
 }
 
 .confirm-no {
@@ -139,7 +139,7 @@ input[type="text"]:disabled {
 }
 
 .confirm-no:hover {
-    color: #5a6268;
+    background: #a4a5a7;
 }
 
 .add-revenue-button {

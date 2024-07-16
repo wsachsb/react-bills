@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import updateRevenue from './updateRevenue';
-import './EditRevenueForm.css';  // Reutilizando o mesmo CSS do AddRevenueForm
+import updateExpense from './updateExpense';
+import './EditExpenseForm';
 
-const EditRevenueForm = ({ revenue, closeModal, refreshList }) => {
-    const [nomeReceita, setNomeReceita] = useState(revenue.nomeReceita);
-    const [valor, setValor] = useState(revenue.valor);
-    const [dtrecebimento, setDtrecebimento] = useState(revenue.dtrecebimento);
-    const [observacoes, setObservacoes] = useState(revenue.observacoes);
+const EditExpenseForm = ({ expense, closeModal, refreshList }) => {
+    console.log("expense: " + JSON.stringify(expense));
+    const [nomeReceita, setNomeReceita] = useState(expense.nomeReceita);
+    const [valor, setValor] = useState(expense.valor);
+    const [dtrecebimento, setDtrecebimento] = useState(expense.dtrecebimento);
+    const [observacoes, setObservacoes] = useState(expense.observacoes);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedRevenue = {
-            id: revenue.id,
+        const updatedExpense = {
+            id: expense.id,
             nomeReceita,
             valor,
             dtrecebimento,
@@ -19,13 +20,13 @@ const EditRevenueForm = ({ revenue, closeModal, refreshList }) => {
         };
 
         try {
-            await updateRevenue(updatedRevenue);
+            await updateExpense(updatedExpense);
             if (refreshList) {
                 refreshList();
             }
             closeModal();
         } catch (error) {
-            console.error('Erro ao atualizar receita:', error);
+            console.error('Erro ao atualizar expense:', error);
         }
     };
 
@@ -75,4 +76,4 @@ const EditRevenueForm = ({ revenue, closeModal, refreshList }) => {
     );
 };
 
-export default EditRevenueForm;
+export default EditExpenseForm;
