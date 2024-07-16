@@ -1,19 +1,19 @@
 .menu-tooltip {
-  background-color: #007bff; /* Cor de fundo primária */
-  color: #fff; /* Cor do texto */
-  font-weight: bold; /* Negrito para melhor visibilidade */
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
 
 .menu-tooltip:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  background-color: #0056b3;
 }
 
 .account-menu-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px; /* Adicionado espaçamento inferior */
-  border-bottom: 1px solid #e0e0e0; /* Linha horizontal clara */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .menu-items {
@@ -23,17 +23,24 @@
 
 .menu-item {
   min-width: 100px;
-  padding: 10px 20px; /* Espaçamento interno para estilo melhorado */
+  padding: 10px 20px;
   cursor: pointer;
-  font-weight: bold; /* Negrito para melhor visibilidade */
-  color: #1976d2; /* Cor do texto */
-  transition: background-color 0.3s ease; /* Transição suave */
+  font-weight: bold;
+  color: #1976d2;
+  transition: background-color 0.3s ease;
 }
 
 .menu-item:hover {
-  background-color: #e3f2fd; /* Cor de fundo ao passar o mouse */
+  background-color: #e3f2fd;
 }
 
 .avatar-button {
-  margin-left: 16px; /* ml: 2 equivalente */
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  margin-left: 16px;
+}
+
+.avatar-button:hover {
+  background-color: #0056b3;
 }

@@ -45,7 +45,7 @@ const AccountMenu = ({ userResponse }) => {
         </Box>
         <Tooltip 
           title="Account settings" 
-          classes={{ tooltip: 'menu-tooltip' }} // Adiciona a classe CSS customizada
+          classes={{ tooltip: 'menu-tooltip' }}
         >
           <IconButton
             onClick={handleClick}
@@ -55,7 +55,7 @@ const AccountMenu = ({ userResponse }) => {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{userResponse && userResponse.initials}</Avatar>
+            <Avatar sx={{ width: 32, height: 32, background: '#007bff', ":hover": '#0056b3;'}}>{userResponse && userResponse.initials}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
