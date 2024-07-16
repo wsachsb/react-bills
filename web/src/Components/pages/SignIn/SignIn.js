@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../assets/bills-logo.svg";
 import api from "../../../services/api";
 import { login } from "../../../services/auth";
 import { Form, Container } from "./styles";
+import { UserContext } from "../../pages/UserContext/UserContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
+  const { setUserResponse } = useContext(UserContext);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -34,7 +35,9 @@ const SignIn = () => {
         };
 
         const response = await api.post("/auth", data, header);
+        console.log("userData: " + JSON.stringify(response.data.userResponse));        
         login(response.data.token);
+        setUserResponse(response.data.userResponse);
         navigate("/dashboard");
       } catch (err) {
         setError("Houve um problema com o login, verifique suas credenciais");

@@ -1,8 +1,11 @@
-import React from 'react';
-import AppRoutes from './routes';
+import React from "react";
+import { UserProvider } from "../src/Components/pages/UserContext/UserContext";
+import AppRoutes from "./routes";
 
-function App() {
-  return <AppRoutes />;
-}
+const App = () => (
+  <UserProvider>
+    <AppRoutes />
+  </UserProvider>
+);
 
 export default App;

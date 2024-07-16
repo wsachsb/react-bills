@@ -2,11 +2,10 @@ import React from "react";
 import Menu from "../Menu/Menu";
 import "./Header.css";
 
-const Header = () => {
-  
+const Header = ({ userResponse }) => {
   return (
     <header>
-      <Menu />
+      <Menu userResponse={userResponse} />
     </header>
   );
 };

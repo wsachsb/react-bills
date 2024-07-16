@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -12,9 +12,9 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import './Menu.css'; // Importando o arquivo CSS
+import './Menu.css';
 
-export default function AccountMenu() {
+const AccountMenu = ({ userResponse }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -48,7 +48,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{userResponse && userResponse.initials}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -88,7 +88,7 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <Avatar /> {userResponse ? userResponse.firstName : "Profile"}
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <Avatar /> My account
@@ -116,3 +116,5 @@ export default function AccountMenu() {
     </React.Fragment>
   );
 }
+
+export default AccountMenu;

@@ -51,49 +51,49 @@ const ExpenseCard = ({ summaryItem, refreshList }) => {
                     <input
                         className="promotion-card__info"
                         type="text"
-                        value={summaryItem.nomeConta}
+                        defaultValue={summaryItem.nomeConta}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Valor à pagar:</label>
                     <input
                         type="text"
-                        value={formatCurrency(summaryItem.valor)}
+                        defaultValue={formatCurrency(summaryItem.valor)}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data de Vencimento:</label>
                     <input
                         type="text"
-                        value={summaryItem.dtvencimento}
+                        defaultValue={summaryItem.dtvencimento}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data de Pagamento:</label>
                     <input
                         type="text"
-                        value={summaryItem.dtpagamento}
+                        defaultValue={summaryItem.dtpagamento}
                     />
-                </div>                
+                </div>
                 <div className="field-container">
                     <label className="field-label">Situacao:</label>
                     <input
                         type="text"
-                        value={summaryItem.situacao}
+                        defaultValue={summaryItem.situacao}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Observações:</label>
                     <input
                         type="text"
-                        value={summaryItem.observacoes}
+                        defaultValue={summaryItem.observacoes}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Categoria:</label>
                     <input
                         type="text"
-                        value={summaryItem.categoria}
+                        defaultValue={summaryItem.categoria}
                     />
                 </div>
             </div>

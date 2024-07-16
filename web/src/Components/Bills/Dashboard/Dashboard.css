@@ -1,16 +1,16 @@
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza o conteúdo horizontalmente */
-  min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
+  align-items: center;
+  min-height: 100vh;
   padding: 20px;
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+  box-sizing: border-box;
 }
 
 .dashboard-content-container {
-  margin-bottom: 20px; /* Espaço entre o card e os botões */
+  margin-bottom: 20px;
   width: 100%;
-  max-width: 800px; /* Largura máxima do conteúdo */
+  max-width: 800px;
 }
 
 .dashboard-button {
@@ -22,7 +22,7 @@
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  font-size: 14px; /* Tamanho da fonte dos botões */
+  font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
@@ -32,18 +32,16 @@
 
 .dashboard-button-container {
   display: flex;
-  flex-direction: row; /* Alinha os botões em linha */
-  gap: 20px; /* Espaço entre os botões */
-  justify-content: center; /* Centraliza os botões horizontalmente */
-  margin-bottom: 30px; /* Espaço acima do footer */
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .dashboard-footer {
   padding: 10px;
-  text-align: center; /* Centraliza o texto no footer */
-  background: #f1f1f1;
-  border-top: 1px solid #ddd;
-  width: 100%; /* Largura total do footer */
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-  margin-top: auto; /* Garante que o footer vá para o final da página */
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
 }

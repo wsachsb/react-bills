@@ -11,7 +11,6 @@ const Expenses = () => {
     const location = useLocation();
     const { selectedItem } = location.state || {};
     const navigate = useNavigate();
-    const [coutResults, setCoutResults] = useState([]);
 
     useEffect(() => {
         if (selectedItem && selectedItem.mesid && selectedItem.year) {
@@ -19,8 +18,6 @@ const Expenses = () => {
             api.get(`/expenses/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
-                    setCoutResults(response.totalElements);
-                    console.log("result: " + JSON.stringify(response.data.totalElements))
                 })
                 .catch((error) => {
                     alert('Sessão expirou, faça um novo login');
@@ -45,6 +42,8 @@ const Expenses = () => {
             api.get(`/expenses/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
+                    const coutResults = response.totalElements;
+                    console.log("result: " + coutResults);
                 })
                 .catch((error) => {
                     alert('Erro ao atualizar a lista de expenses');

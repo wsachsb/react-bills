@@ -51,28 +51,28 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                     <input
                         className="promotion-card__info"
                         type="text"
-                        value={summaryItem.nomeReceita}
+                        defaultValue={summaryItem.nomeReceita}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Valor à receber:</label>
                     <input
                         type="text"
-                        value={formatCurrency(summaryItem.valor)}
+                        defaultValue={formatCurrency(summaryItem.valor)}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data à receber:</label>
                     <input
                         type="text"
-                        value={summaryItem.dtrecebimento}
+                        defaultValue={summaryItem.dtrecebimento}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Observações:</label>
                     <input
                         type="text"
-                        value={summaryItem.observacoes}
+                        defaultValue={summaryItem.observacoes}
                     />
                 </div>
             </div>

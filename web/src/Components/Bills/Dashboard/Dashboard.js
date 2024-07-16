@@ -98,9 +98,6 @@ const Dashboard = () => {
           </button>
         </div>
       )}
-      <footer className="dashboard-footer">
-        <p>&copy; 2024 My Dashboard. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
