@@ -21,7 +21,7 @@ const Revenues = () => {
                 })
                 .catch((error) => {
                     alert('Sessão expirou, faça um novo login');
-                    navigate('/');
+                    navigate('/signin');
                 });
         } else {
             setSummaryList([]);

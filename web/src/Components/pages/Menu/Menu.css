@@ -1,3 +1,13 @@
+.menu-tooltip {
+  background-color: #007bff; /* Cor de fundo primária */
+  color: #fff; /* Cor do texto */
+  font-weight: bold; /* Negrito para melhor visibilidade */
+}
+
+.menu-tooltip:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
 .account-menu-container {
   display: flex;
   align-items: center;

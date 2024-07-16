@@ -32,9 +32,8 @@ const AccountMenu = ({ userResponse }) => {
   };
 
   const handleLogout = () => {
-    // Remover token e redirecionar para a página de login
-    localStorage.removeItem('token'); // Substitua por sua lógica de remoção de token
-    navigate('/signin'); // Redireciona para a página de login
+    localStorage.removeItem('token');
+    navigate('/signin');
   };
 
   return (
@@ -44,7 +43,10 @@ const AccountMenu = ({ userResponse }) => {
           <Typography className="menu-item" onClick={handleHomeClick}>Home</Typography>
           <Typography className="menu-item" onClick={handleHomeClick}>About</Typography>
         </Box>
-        <Tooltip title="Account settings">
+        <Tooltip 
+          title="Account settings" 
+          classes={{ tooltip: 'menu-tooltip' }} // Adiciona a classe CSS customizada
+        >
           <IconButton
             onClick={handleClick}
             size="small"
@@ -120,6 +122,6 @@ const AccountMenu = ({ userResponse }) => {
       </Menu>
     </React.Fragment>
   );
-}
+};
 
 export default AccountMenu;

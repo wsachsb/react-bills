@@ -104,7 +104,7 @@ const AddExpenseForm = ({ setSummaryList, closeModal, mesid, year }) => {
         </div>
         <div>
           <label htmlFor="situacao">Situação</label>
-          <select
+          <select className='add-expense-form-select'
             id="situacao"
             value={situacao}
             onChange={(e) => setSituacao(e.target.value)}
