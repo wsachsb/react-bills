@@ -14,7 +14,16 @@ import Layout from './Components/pages/Layout/Layout';
 const AppRoutes = () => (
   <BrowserRouter>
     <RouterRoutes>
-      <Route path="/" element={<SignIn />} />
+      <Route path="/"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <DashboardMainDashboard />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
       <Route
         path="/dashboard"

@@ -17,6 +17,7 @@ import './Menu.css';
 const AccountMenu = ({ userResponse }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,10 +27,14 @@ const AccountMenu = ({ userResponse }) => {
     setAnchorEl(null);
   };
 
-  const navigate = useNavigate();
-
   const handleHomeClick = () => {
     navigate('/dashboard');
+  };
+
+  const handleLogout = () => {
+    // Remover token e redirecionar para a página de login
+    localStorage.removeItem('token'); // Substitua por sua lógica de remoção de token
+    navigate('/signin'); // Redireciona para a página de login
   };
 
   return (
@@ -106,7 +111,7 @@ const AccountMenu = ({ userResponse }) => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}> {/* Atualize o MenuItem para chamar handleLogout */}
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
