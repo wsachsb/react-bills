@@ -31,6 +31,14 @@ const AccountMenu = ({ userResponse }) => {
     navigate('/dashboard');
   };
 
+  const handleConfigClick = () => {
+    navigate('/settings');
+  };
+  
+  const handleProfileClick = () => {
+    navigate('/profile');
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/signin');
@@ -95,25 +103,22 @@ const AccountMenu = ({ userResponse }) => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> {userResponse ? userResponse.firstName : "Profile"}
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+          <Avatar sx={{ width: 32, height: 32, background: '#007bff', ":hover": '#0056b3;'}}/> {userResponse ? userResponse.firstName : "Profile"}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfileClick}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          Add another account
+          Edit Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleConfigClick}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleLogout}> {/* Atualize o MenuItem para chamar handleLogout */}
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

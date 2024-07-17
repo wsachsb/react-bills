@@ -4,7 +4,7 @@ import './Card.css';
 const formatCurrency = (value) => {
   if (value == null) {
     value = 0.00;
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });;
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
