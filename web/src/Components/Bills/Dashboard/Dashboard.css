@@ -115,3 +115,27 @@
 .modal button:active {
   background-color: #004085;
 }
+
+.add-dashboard-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 35px;
+  right: 30px;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.add-dashboard-button:hover {
+  background-color: #0056b3;
+}
