@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 import api from "../../../services/api";
 import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
 import ListBox from '../../../Components/pages/ListBox/ListBox';
@@ -10,6 +11,7 @@ const Dashboard = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [listBoxLoaded, setListBoxLoaded] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,8 +30,7 @@ const Dashboard = () => {
       })
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
-        alert('Sessão expirou, faça um novo login');
-        navigate('/signin');
+        setIsModalOpen(true); // Abre o modal em vez de alert
       });
   }, [navigate]);
 
@@ -59,6 +60,11 @@ const Dashboard = () => {
         state: { selectedItem }
       });
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate('/signin');
   };
 
   return (
@@ -98,6 +104,18 @@ const Dashboard = () => {
           </button>
         </div>
       )}
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Sessão Expirada"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <h2>Sessão Expirada</h2>
+        <p>Sua sessão expirou. Por favor, faça um novo login.</p>
+        <button onClick={closeModal}>OK</button>
+      </Modal>
     </div>
   );
 };

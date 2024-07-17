@@ -36,7 +36,14 @@ const SignIn = () => {
 
         const response = await api.post("/auth", data, header);       
         login(response.data.token);
+        
+        // Armazenar os dados do usuário no localStorage
+        localStorage.setItem('userResponse', JSON.stringify(response.data.userResponse));
+
+        // Atualizar o contexto do usuário
         setUserResponse(response.data.userResponse);
+
+        // Navegar para o dashboard
         navigate("/dashboard");
       } catch (err) {
         setError("Houve um problema com o login, verifique suas credenciais");

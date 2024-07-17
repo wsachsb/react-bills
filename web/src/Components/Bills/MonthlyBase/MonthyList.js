@@ -15,9 +15,7 @@ const MonthyList = ({ selectedItem }) => {
                     setSummaryList(response.data.content);
                 })
                 .catch((error) => {
-                    console.error('There was an error fetching the summary list!', error);
-                    alert('Sessão expirou, faça um novo login');
-                    navigate('/signin');
+                    navigate('/dashboard');
                 });
         } else {
             setSummaryList([]);

@@ -6,6 +6,8 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
   useEffect(() => {
     if (selectedItem) {
       setValue(selectedItem.id.toString());
+    } else {
+      setValue(""); // Garantir que o valor vazio é selecionado inicialmente se não houver item selecionado
     }
   }, [selectedItem]);
 
@@ -26,17 +28,18 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
 
   return (
     <div>
-      <select className='dashboard-select'
+      <select 
+        className='dashboard-select'
         onChange={handleChange}
         value={value}
       >
-        <option value="" disabled>Select an option</option>
+        <option value="">Selecione...</option>
         {items
           .sort((a, b) => a.mesid - b.mesid)
           .map((item, index) => (
-        <option key={index} value={item.id}>
-          {item.nome_mes}
-        </option>
+            <option key={index} value={item.id}>
+              {item.nome_mes}-{item.year}
+            </option>
           ))}
       </select>
     </div>
