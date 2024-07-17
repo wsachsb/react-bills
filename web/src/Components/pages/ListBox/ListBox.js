@@ -26,7 +26,7 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
 
   return (
     <div>
-      <select
+      <select className='dashboard-select'
         onChange={handleChange}
         value={value}
       >

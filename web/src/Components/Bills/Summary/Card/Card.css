@@ -2,32 +2,63 @@
   border-radius: 8px;
   border: 1px solid #C3C3C3;
   box-shadow: 0 2px 7px 0 rgba(0,0,0, 0.15);
+  padding: 20px;
+  background-color: #fff;
   display: flex;
-  padding: 15px;
+  flex-direction: column;
   align-items: flex-start;
-}
-
-
-.promotion-card__image {
-  max-width: 100px;
-  margin-right: 20px;
+  max-width: 80vw;
+  width: 100%;
+  margin: 10px auto;
 }
 
 .promotion-card__title {
-  font-size: 16px;
+  font-size: 18px;
   color: #2C3E50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.promotion-card__info {
+  width: 100%;
+}
+
+.promotion-card__field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.promotion-card__label {
+  font-size: 14px;
+  color: #2C3E50;
+  min-width: 120px;
+  font-weight: bold;
+}
+
+.promotion-card__input {
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #BDC3C7;
+  border-radius: 4px;
+  background-color: #F7F9F9;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  color: #2C3E50;
+  font-weight: 700;
+  text-align: right;
+  width: 100%;
 }
 
 .promotion-card__revenues {
-  font-size: 26px;
-  font-weight: 700;
   color: #3498DB;
 }
 
 .promotion-card__expenses {
-  font-size: 26px;
-  font-weight: 700;
   color: #e23838;
+}
+
+.promotion-card__price {
+  color: #27AE60;
 }
 
 .promotion-card__footer {
@@ -52,4 +83,26 @@
   color: #3498DB;
   text-decoration: none;
   padding: 8px 10px;
+}
+
+@media (max-width: 768px) {
+  .promotion-card {
+    max-width: 95vw;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .promotion-card {
+    max-width: 100vw;
+    padding: 10px;
+  }
+
+  .promotion-card__title {
+    font-size: 16px;
+  }
+
+  .promotion-card__label {
+    min-width: 80px;
+  }
 }

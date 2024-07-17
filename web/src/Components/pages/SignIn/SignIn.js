@@ -34,8 +34,7 @@ const SignIn = () => {
           }
         };
 
-        const response = await api.post("/auth", data, header);
-        console.log("userData: " + JSON.stringify(response.data.userResponse));        
+        const response = await api.post("/auth", data, header);       
         login(response.data.token);
         setUserResponse(response.data.userResponse);
         navigate("/dashboard");

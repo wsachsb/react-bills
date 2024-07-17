@@ -35,7 +35,7 @@ const AddExpenseForm = ({ setSummaryList, closeModal, mesid, year }) => {
       valor: numericValor,
       dtvencimento,
       dtpagamento,
-      situacao,
+      situacao: situacao === 'aberto' ? 'open' : 'paid',
       observacoes,
       mesId: mesid,
       yearId: year
@@ -43,7 +43,7 @@ const AddExpenseForm = ({ setSummaryList, closeModal, mesid, year }) => {
 
     try {
       const newExpense = await addExpense(dataToSubmit);
-      setSummaryList((prevList) => [...prevList, newExpense]); // Atualiza a lista com a nova despesa
+      setSummaryList((prevList) => [...prevList, newExpense]);
       closeModal();
     } catch (error) {
       setError('Erro ao adicionar despesa. Por favor, tente novamente.'); // Atualiza o estado de erro
@@ -104,14 +104,16 @@ const AddExpenseForm = ({ setSummaryList, closeModal, mesid, year }) => {
         </div>
         <div>
           <label htmlFor="situacao">Situação</label>
-          <input
+          <select className='add-expense-form-select'
             id="situacao"
-            type="text"
-            placeholder="Situação"
             value={situacao}
             onChange={(e) => setSituacao(e.target.value)}
             required
-          />
+          >
+            <option value="" disabled>Selecione uma opção</option>
+            <option value="aberto">Aberto</option>
+            <option value="pago">Pago</option>
+          </select>
         </div>
         <div>
           <label htmlFor="observacoes">Observações</label>

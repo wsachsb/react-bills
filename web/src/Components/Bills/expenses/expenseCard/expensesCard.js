@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import deleteExpense from '../delete/deleteExpense';
 import EditExpenseForm from '../update/EditExpenseForm';
-import './expensesCard';
+import './expensesCard.css';
 
 const formatCurrency = (value) => {
     if (value == null) {
         return "R$ 0,00";
     }
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
+
+const translateSituacao = (situacao) => {
+    switch (situacao) {
+        case 'open':
+            return 'Aberto';
+        case 'paid':
+            return 'Pago';
+        default:
+            return 'Desconhecido';
+    }
 };
 
 const ExpenseCard = ({ summaryItem, refreshList }) => {
@@ -51,49 +62,54 @@ const ExpenseCard = ({ summaryItem, refreshList }) => {
                     <input
                         className="promotion-card__info"
                         type="text"
-                        defaultValue={summaryItem.nomeConta}
+                        value={summaryItem.nomeConta}
+                        readOnly
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Valor à pagar:</label>
                     <input
                         type="text"
-                        defaultValue={formatCurrency(summaryItem.valor)}
+                        value={formatCurrency(summaryItem.valor)}
+                        readOnly
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data de Vencimento:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.dtvencimento}
+                        value={summaryItem.dtvencimento}
+                        readOnly
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data de Pagamento:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.dtpagamento}
+                        value={summaryItem.dtpagamento}
+                        readOnly
                     />
                 </div>
                 <div className="field-container">
-                    <label className="field-label">Situacao:</label>
-                    <input
-                        type="text"
-                        defaultValue={summaryItem.situacao}
-                    />
+                    <label className="field-label">Situação:</label>
+                    <div className="promotion-card__info">
+                        {translateSituacao(summaryItem.situacao)}
+                    </div>
                 </div>
                 <div className="field-container">
                     <label className="field-label">Observações:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.observacoes}
+                        value={summaryItem.observacoes}
+                        readOnly
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Categoria:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.categoria}
+                        value={summaryItem.categoria}
+                        readOnly
                     />
                 </div>
             </div>

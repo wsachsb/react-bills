@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.16.1",
     "@mui/material": "^5.16.1",
     "axios": "^0.18.0",
@@ -18,10 +19,12 @@
     "react-datepicker": "^7.3.0",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
+    "react-input-mask": "^2.0.4",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.24.1",
     "react-scripts": "1.1.4",
-    "styled-components": "^3.4.2"
+    "styled-components": "^3.4.2",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

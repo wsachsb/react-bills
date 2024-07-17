@@ -3,7 +3,6 @@ import updateExpense from './updateExpense';
 import './EditExpenseForm';
 
 const EditExpenseForm = ({ expense, closeModal, refreshList }) => {
-    console.log("expense: " + JSON.stringify(expense));
     const [nomeReceita, setNomeReceita] = useState(expense.nomeReceita);
     const [valor, setValor] = useState(expense.valor);
     const [dtrecebimento, setDtrecebimento] = useState(expense.dtrecebimento);

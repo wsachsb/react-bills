@@ -8,13 +8,24 @@ import Revenues from "./Components/Bills/revenues/revenues";
 import Expenses from "./Components/Bills/expenses/expenses";
 import Balances from "./Components/Bills/balances/balances";
 import Monthly from "./Components/Bills/MonthlyBase/Monthy";
+import Profile from "./Components/Bills/profile/profile";
+import Settings from "./Components/Bills/profile/profile";
 import PrivateRoute from "./PrivateRoute";
 import Layout from './Components/pages/Layout/Layout';
 
 const AppRoutes = () => (
   <BrowserRouter>
     <RouterRoutes>
-      <Route path="/" element={<SignIn />} />
+      <Route path="/"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <DashboardMainDashboard />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
       <Route
         path="/dashboard"
@@ -72,6 +83,26 @@ const AppRoutes = () => (
           <PrivateRoute>
             <Layout>
               <Revenues />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Settings />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Profile />
             </Layout>
           </PrivateRoute>
         }

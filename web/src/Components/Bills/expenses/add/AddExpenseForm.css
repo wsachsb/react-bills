@@ -81,3 +81,12 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 999; /* Garante que o fundo está atrás do modal */
 }
+
+.add-expense-form-select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,96 @@
+.profile-form {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  max-width: 60%; /* Define a largura máxima do formulário */
+}
+
+.profile-form-title {
+  font-size: 24px;
+  color: #2C3E50;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-form-label {
+  font-size: 14px;
+  color: #2C3E50;
+  min-width: 120px;
+  font-weight: bold;
+}
+
+.profile-form-input {
+  flex: 2;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-form-input-disabled {
+  background: #e9ecef;
+  cursor: not-allowed;
+}
+
+.profile-form-checkbox {
+  margin-right: 10px;
+}
+
+.profile-form-checkbox-disabled {
+  background: #e9ecef;
+  cursor: not-allowed;
+}
+
+.profile-form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.profile-form-button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-form-submit,
+.profile-form-edit,
+.profile-form-cancel {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.profile-form-submit {
+  background-color: #007bff;
+}
+
+.profile-form-edit {
+  background-color: #007bff;
+}
+
+.profile-form-cancel {
+  background-color: #bbb6b6;
+}
+
+.profile-form-submit:hover,
+.profile-form-edit:hover {
+  background-color: #0056b3;
+}
+
+.profile-form-cancel:hover {
+  background: #666;
+}

@@ -29,7 +29,7 @@ const Dashboard = () => {
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
         alert('Sessão expirou, faça um novo login');
-        navigate('/');
+        navigate('/signin');
       });
   }, [navigate]);
 
