@@ -8,7 +8,8 @@ const MonthyList = ({ selectedItem }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (selectedItem && selectedItem.id && selectedItem.year) {
+        console.log("MonthList: " + JSON.stringify(selectedItem));
+        if (selectedItem) {
             const { mesid, year } = selectedItem;
             api.get(`/dashboard/mes/${mesid}&${year}`)
                 .then((response) => {

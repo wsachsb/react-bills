@@ -1,21 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import { getMonths } from '../../../Components/Bills/MonthlyBase/Monthy';
+import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
 import './balanceForm.css';
 
 const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
-  const [balanceData, setBalanceData] = useState({
-    year: '',
-    month: ''
-  });
-
+  const [balanceData, setBalanceData] = useState({ year: '', month: '' });
   const [years, setYears] = useState([]);
   const [months, setMonths] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
-  
+  const [submittedItem, setSubmittedItem] = useState(null); // Estado local para o item submetido
   const formRef = useRef(null);
+  const navigate = useNavigate(); // Criar o hook de navegação
 
   useEffect(() => {
-    // Gerar anos a partir do ano atual e 10 anos anteriores
     const currentYear = new Date().getFullYear();
     const yearRange = Array.from({ length: 11 }, (_, i) => currentYear - i);
     setYears(yearRange);
@@ -24,7 +22,7 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
   useEffect(() => {
     const fetchMonths = async () => {
       try {
-        const monthsData = await getMonths(); 
+        const monthsData = await getMonths();
         setMonths(monthsData);
       } catch (error) {
         console.error('Failed to fetch months:', error);
@@ -35,7 +33,6 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
   }, []);
 
   useEffect(() => {
-    // Verifica se ambos os campos foram preenchidos
     setIsFormValid(balanceData.year !== '' && balanceData.month !== '');
   }, [balanceData]);
 
@@ -45,17 +42,19 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("Selected month:", balanceData.month, "Selected year:", balanceData.year);
-      const newItem = { month: balanceData.month, year: balanceData.year };
+    const newItem = { mesid: balanceData.month, year: balanceData.year };
+    console.log("Selected newItem:", JSON.stringify(newItem));
+    setSubmittedItem(newItem);
+    if (onBalanceSubmit) {
       onBalanceSubmit(newItem);
-      closeModal();
-    } catch (error) {
-      alert('Erro ao adicionar o balanço. Tente novamente.');
     }
+    if (closeModal) {
+      closeModal();
+    }
+    navigate('/dashboard');
+    window.location.reload();
   };
 
-  // Fecha o modal quando clicado fora do formulário
   const handleClickOutside = (event) => {
     if (formRef.current && !formRef.current.contains(event.target)) {
       closeModal();
@@ -101,8 +100,8 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
             </select>
           </div>
           <div className="addbalance-form-buttons">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={`addbalance-form-button ${isFormValid ? 'addbalance-form-button-primary' : 'disabled'}`}
               disabled={!isFormValid}
             >
@@ -111,6 +110,7 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
           </div>
         </form>
       </div>
+      {submittedItem && <MonthyList selectedItem={submittedItem} />}
     </div>
   );
 };

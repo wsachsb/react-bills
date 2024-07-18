@@ -139,7 +139,7 @@ const Dashboard = () => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <BalanceForm onClose={closeBalanceModal} />
+        <BalanceForm closeModal={closeBalanceModal} onBalanceSubmit={handleBalancesClick} />
       </Modal>
     </div>
   );
