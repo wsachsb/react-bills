@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import deleteBalance from '../../balances/delete/deleteBalance';
 
 const formatCurrency = (value) => {
   if (value == null) {
@@ -14,9 +15,15 @@ const SummaryCard = ({ summaryItem }) => {
     console.log('Editar item:', summaryItem);
   };
 
-  const handleDelete = () => {
-    // Implementar a lógica de exclusão aqui
-    console.log('Deletar item:', summaryItem);
+  const handleDelete = async () => {
+    try {
+      await deleteBalance(summaryItem.id); // Chamada para deletar o item
+      console.log('Item deletado:', summaryItem);
+      // Aqui você pode adicionar lógica adicional após a exclusão, como atualizar a UI
+    } catch (error) {
+      // Tratar erros de deleção aqui
+      console.error('Erro ao deletar o item:', error.message);
+    }
   };
 
   return (
