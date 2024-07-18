@@ -20,8 +20,7 @@ const Expenses = () => {
                     setSummaryList(response.data.content || []);
                 })
                 .catch((error) => {
-                    alert('Sessão expirou, faça um novo login');
-                    navigate('/signin');
+                    navigate('/dashboard');
                 });
         } else {
             setSummaryList([]);
@@ -46,8 +45,7 @@ const Expenses = () => {
                     console.log("result: " + coutResults);
                 })
                 .catch((error) => {
-                    alert('Erro ao atualizar a lista de expenses');
-                    console.error('Erro ao atualizar a lista de expenses:', error);
+                    navigate('/dashboard');
                 });
         }
     };

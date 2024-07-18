@@ -20,8 +20,7 @@ const Revenues = () => {
                     setSummaryList(response.data.content || []);
                 })
                 .catch((error) => {
-                    alert('Sessão expirou, faça um novo login');
-                    navigate('/signin');
+                    navigate('/dashboard');
                 });
         } else {
             setSummaryList([]);
@@ -44,8 +43,7 @@ const Revenues = () => {
                     setSummaryList(response.data.content || []);
                 })
                 .catch((error) => {
-                    alert('Erro ao atualizar a lista de receitas');
-                    console.error('Erro ao atualizar a lista de receitas:', error);
+                    navigate('/dashboard');
                 });
         }
     };

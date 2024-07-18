@@ -54,3 +54,88 @@
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 1001;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.modal p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.modal button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+.modal button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+.modal button:active {
+  background-color: #004085;
+}
+
+.add-dashboard-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 35px;
+  right: 30px;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.add-dashboard-button:hover {
+  background-color: #0056b3;
+}

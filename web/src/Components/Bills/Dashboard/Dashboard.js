@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 import api from "../../../services/api";
 import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
 import ListBox from '../../../Components/pages/ListBox/ListBox';
+import BalanceForm from '../../../Components/Bills/Dashboard/balanceForm';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -10,6 +12,8 @@ const Dashboard = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [listBoxLoaded, setListBoxLoaded] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(false);
+  const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
+  const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +23,6 @@ const Dashboard = () => {
         setListBoxItems(items);
         setListBoxLoaded(true);
 
-        // Carrega a opção selecionada do localStorage
         const savedSelectedItem = localStorage.getItem('selectedItem');
         if (savedSelectedItem) {
           const parsedItem = JSON.parse(savedSelectedItem);
@@ -28,8 +31,7 @@ const Dashboard = () => {
       })
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
-        alert('Sessão expirou, faça um novo login');
-        navigate('/signin');
+        setIsSessionModalOpen(true);
       });
   }, [navigate]);
 
@@ -59,6 +61,19 @@ const Dashboard = () => {
         state: { selectedItem }
       });
     }
+  };
+
+  const openBalanceModal = () => {
+    setIsBalanceModalOpen(true);
+  };
+
+  const closeBalanceModal = () => {
+    setIsBalanceModalOpen(false);
+  };
+
+  const closeSessionModal = () => {
+    setIsSessionModalOpen(false);
+    navigate('/signin');
   };
 
   return (
@@ -96,8 +111,36 @@ const Dashboard = () => {
           >
             Go to Balances
           </button>
+          <button 
+            onClick={openBalanceModal}
+            className="add-dashboard-button"
+          >
+            +
+          </button>
         </div>
       )}
+
+      <Modal
+        isOpen={isSessionModalOpen}
+        onRequestClose={closeSessionModal}
+        contentLabel="Sessão Expirada"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <h2>Sessão Expirada</h2>
+        <p>Sua sessão expirou. Por favor, faça um novo login.</p>
+        <button onClick={closeSessionModal}>OK</button>
+      </Modal>
+
+      <Modal
+        isOpen={isBalanceModalOpen}
+        onRequestClose={closeBalanceModal}
+        contentLabel="Balance Form"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <BalanceForm closeModal={closeBalanceModal} onBalanceSubmit={handleBalancesClick} />
+      </Modal>
     </div>
   );
 };

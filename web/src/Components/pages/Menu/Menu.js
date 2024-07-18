@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -14,10 +14,19 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import './Menu.css';
 
-const AccountMenu = ({ userResponse }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const AccountMenu = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [userResponse, setUserResponse] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Recuperar dados do usuário do localStorage
+    const userData = localStorage.getItem('userResponse');
+    if (userData) {
+      setUserResponse(JSON.parse(userData));
+    }
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,14 +43,15 @@ const AccountMenu = ({ userResponse }) => {
   const handleConfigClick = () => {
     navigate('/settings');
   };
-  
+
   const handleProfileClick = () => {
     navigate('/profile');
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/signin');
+    localStorage.removeItem('userResponse'); // Remover dados do usuário ao fazer logout
+    navigate('/dashboard');
   };
 
   return (
@@ -63,7 +73,9 @@ const AccountMenu = ({ userResponse }) => {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32, background: '#007bff', ":hover": '#0056b3;'}}>{userResponse && userResponse.initials}</Avatar>
+            <Avatar sx={{ width: 32, height: 32, background: '#007bff', ":hover": '#0056b3;'}}>
+              {userResponse ? userResponse.initials : "P"}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>

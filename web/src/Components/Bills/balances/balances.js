@@ -11,14 +11,12 @@ const Balances = () => {
 
   useEffect(() => {
     if (selectedItem && selectedItem.id && selectedItem.year) {
-      //const { mesid, year } = selectedItem;
       api.get(`/balance/list`)
         .then((response) => {
           setSummaryList(response.data.content);
         })
         .catch((error) => {
-          alert('Sessão expirou, faça um novo login');
-          navigate('/signin');
+          navigate('/dashboard');
         });
     } else {
       setSummaryList([]);

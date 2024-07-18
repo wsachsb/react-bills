@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from "react";
 import api from "../../../services/api";
-import SummaryCard from "../Summary/Card/Card";
 
-const MontlyBaseGetMontly = () => {
+const MONTHS_CACHE_KEY = 'months_cache';
 
-    const [summaryList, setSummaryList] = useState([]);
+export const getMonths = async () => {
+  const cachedMonths = localStorage.getItem(MONTHS_CACHE_KEY);
 
-    useEffect(() => {
-        api.get('month/list')
-            .then((response) => {
-                setSummaryList(response.data.content);
-            });
-    }, []);
+  if (cachedMonths) {
+    return JSON.parse(cachedMonths);
+  }
 
-    return (
-        <div
-            style={{
-                maxWidth: 800,
-                margin: '30px auto',
-            }}
-        >
+  try {
+    const response = await api.get('/monthyear/month');
+    const months = response.data.content;
 
-            {summaryList.map((summaryItem) => (
-                <SummaryCard summaryItem={summaryItem} />
-            ))}
+    // Cache the months in localStorage
+    localStorage.setItem(MONTHS_CACHE_KEY, JSON.stringify(months));
 
-        </div>
-    );
+    return months;
+  } catch (error) {
+    console.error('Failed to fetch months:', error);
+    throw error;
+  }
 };
-
-export default MontlyBaseGetMontly;
