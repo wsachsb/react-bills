@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import updateRevenue from './updateRevenue';
-import './EditRevenueForm.css';  // Reutilizando o mesmo CSS do AddRevenueForm
+import './EditRevenueForm.css';  
 
 const EditRevenueForm = ({ revenue, closeModal, refreshList }) => {
     const [nomeReceita, setNomeReceita] = useState(revenue.nomeReceita);
