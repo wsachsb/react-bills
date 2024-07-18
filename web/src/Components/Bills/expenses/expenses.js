@@ -18,6 +18,7 @@ const Expenses = () => {
             api.get(`/expenses/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
+                    console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
                     navigate('/dashboard');
@@ -42,7 +43,7 @@ const Expenses = () => {
                 .then((response) => {
                     setSummaryList(response.data.content || []);
                     const coutResults = response.totalElements;
-                    console.log("result: " + coutResults);
+                    console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
                     navigate('/dashboard');
