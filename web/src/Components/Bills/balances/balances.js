@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import api from "../../../services/api";
 import SummaryCard from "./balanceCard/Card";
-import './Balances.css'; // Certifique-se de que o arquivo CSS está sendo importado
+import './Balances.css';
 
 const Balances = () => {
   const [summaryList, setSummaryList] = useState([]);
