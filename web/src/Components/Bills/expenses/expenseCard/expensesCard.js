@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import deleteExpense from '../delete/deleteExpense';
 import updateExpense from '../update/updateExpense';
@@ -203,8 +203,8 @@ const ExpenseCard = ({ summaryItem, refreshList }) => {
             {showConfirm && (
                 <div className="confirm-modal">
                     <p>Deseja deletar esse registro?</p>
-                    <button className="confirm-modal__yes" onClick={handleConfirmDelete}>Sim</button>
-                    <button className="confirm-modal__no" onClick={() => setShowConfirm(false)}>Não</button>
+                    <button className="confirm-yes" onClick={handleConfirmDelete}>Sim</button>
+                    <button className="confirm-no" onClick={() => setShowConfirm(false)}>Não</button>
                 </div>
             )}
             <Modal

@@ -17,6 +17,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    refreshListBoxItems();
+  }, [navigate]);
+
+  const refreshListBoxItems = () => {
     api.get('/month/list')
       .then(response => {
         const items = response.data.content;
@@ -33,7 +37,7 @@ const Dashboard = () => {
         console.error('There was an error fetching the list box items!', error);
         setIsSessionModalOpen(true);
       });
-  }, [navigate]);
+  };
 
   useEffect(() => {
     setButtonVisible(!!selectedItem);
@@ -93,30 +97,10 @@ const Dashboard = () => {
       </div>
       {buttonVisible && (
         <div className="dashboard-button-container">
-          <button 
-            onClick={handleRevenuesClick}
-            className="dashboard-button"
-          >
-            Go to Revenues
-          </button>
-          <button 
-            onClick={handleExpensesClick}
-            className="dashboard-button"
-          >
-            Go to Expenses
-          </button>
-          <button 
-            onClick={handleBalancesClick}
-            className="dashboard-button"
-          >
-            Go to Balances
-          </button>
-          <button 
-            onClick={openBalanceModal}
-            className="add-dashboard-button"
-          >
-            +
-          </button>
+          <button onClick={handleRevenuesClick} className="dashboard-button">Go to Revenues</button>
+          <button onClick={handleExpensesClick} className="dashboard-button">Go to Expenses</button>
+          <button onClick={handleBalancesClick} className="dashboard-button">Go to Balances</button>
+          <button onClick={openBalanceModal} className="add-dashboard-button">+</button>
         </div>
       )}
 
