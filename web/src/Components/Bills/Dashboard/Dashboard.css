@@ -139,3 +139,10 @@
 .add-dashboard-button:hover {
   background-color: #0056b3;
 }
+
+.dashboard-button-container .dashboard-button.disabled,
+.dashboard-button-container .add-dashboard-button.disabled {
+  background-color: grey;
+  color: #ccc;
+  cursor: not-allowed;
+}

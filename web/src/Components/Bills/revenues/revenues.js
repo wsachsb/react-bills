@@ -8,6 +8,7 @@ import './Revenues.css';
 const Revenues = () => {
     const [summaryList, setSummaryList] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const [countResults, setCountResults] = useState(0);
     const location = useLocation();
     const { selectedItem } = location.state || {};
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Revenues = () => {
             api.get(`/revenues/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
+                    setCountResults(response.data.totalElements || 0); // Atualiza o countResults
                 })
                 .catch((error) => {
                     navigate('/dashboard');
@@ -41,6 +43,7 @@ const Revenues = () => {
             api.get(`/revenues/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
+                    setCountResults(response.data.totalElements || 0); // Atualiza o countResults
                 })
                 .catch((error) => {
                     navigate('/dashboard');
@@ -50,6 +53,7 @@ const Revenues = () => {
 
     return (
         <div style={{ maxWidth: 800, margin: '30px auto' }}>
+            <h4 className="revenues-header">Revenues {countResults} resultados...</h4>
             {Array.isArray(summaryList) && summaryList.map((summaryItem) => (
                 <RevenueCard
                     key={summaryItem.id}

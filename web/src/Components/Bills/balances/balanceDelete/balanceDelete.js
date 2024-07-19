@@ -1,6 +1,6 @@
 import api from "../../../../services/api";
 
-const deleteBalance = async (id) => {
+const balanceDelete = async (id) => {
     try {
         console.log("DeleteBalance: " + JSON.stringify(id));
         const response = await api.post(`/balance/remove/${id}`, {
@@ -12,4 +12,4 @@ const deleteBalance = async (id) => {
     }
 };
 
-export default deleteBalance;
+export default balanceDelete;

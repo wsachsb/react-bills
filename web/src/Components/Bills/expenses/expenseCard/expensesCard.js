@@ -210,7 +210,7 @@ const ExpenseCard = ({ summaryItem, refreshList }) => {
             <Modal
                 isOpen={showModal}
                 onRequestClose={closeModal}
-                className="modal-revenue"
+                className="modal-expense"
                 overlayClassName="modal-background"
                 ariaHideApp={false}
             >

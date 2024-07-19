@@ -8,6 +8,7 @@ import './Expenses.css';
 const Expenses = () => {
     const [summaryList, setSummaryList] = useState([]);
     const [showForm, setShowForm] = useState(false);
+    const [countResults, setCountResults] = useState(0);
     const location = useLocation();
     const { selectedItem } = location.state || {};
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Expenses = () => {
             api.get(`/expenses/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
+                    setCountResults(response.data.totalElements || 0);
                     console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
@@ -42,7 +44,7 @@ const Expenses = () => {
             api.get(`/expenses/list/mes/${mesid}&${year}`)
                 .then((response) => {
                     setSummaryList(response.data.content || []);
-                    const coutResults = response.totalElements;
+                    setCountResults(response.data.totalElements || 0);
                     console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
@@ -53,6 +55,7 @@ const Expenses = () => {
 
     return (
         <div style={{ maxWidth: 800, margin: '30px auto' }}>
+            <h4 className="expenses-header">Expenses {countResults} resultados...</h4>
             {Array.isArray(summaryList) && summaryList.map((summaryItem) => (
                 <ExpensesCard
                     key={summaryItem.id}
@@ -71,7 +74,7 @@ const Expenses = () => {
                     />
                 </div>
             )}
-            <button className="add-revenue-button" onClick={handleAddExpense}>
+            <button className="add-expense-button" onClick={handleAddExpense}>
                 +
             </button>
         </div>

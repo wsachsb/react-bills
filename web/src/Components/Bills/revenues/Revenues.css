@@ -100,3 +100,8 @@
 .cancel-button:hover {
   background: #666;
 }
+
+.revenues-header {
+  text-align: left;
+  margin-bottom: 20px;
+}

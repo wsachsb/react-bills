@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Card.css';
-import deleteBalance from '../../balances/delete/deleteBalance';
+import deleteBalance from '../balanceDelete/balanceDelete';
 import Modal from 'react-modal';
 
 const formatCurrency = (value) => {
@@ -10,7 +10,7 @@ const formatCurrency = (value) => {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 
-const SummaryCard = ({ summaryItem, refreshList }) => {
+const SummaryCard = ({ summaryItem, refreshList, hideEditDeleteButtons }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleEdit = () => {
@@ -70,10 +70,12 @@ const SummaryCard = ({ summaryItem, refreshList }) => {
         </div>
       </div>
 
-      <div className="button-container">
-        <button className="edit-button" onClick={handleEdit}>Editar</button>
-        <button className="delete-button" onClick={handleDelete}>Deletar</button>
-      </div>
+      {!hideEditDeleteButtons && (
+        <div className="button-container">
+          <button className="edit-button" onClick={handleEdit}>Editar</button>
+          <button className="delete-button" onClick={handleDelete}>Deletar</button>
+        </div>
+      )}
 
       {showConfirm && (
         <Modal

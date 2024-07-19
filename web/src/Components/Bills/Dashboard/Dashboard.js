@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "react-modal";
 import api from "../../../services/api";
 import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
 import ListBox from '../../../Components/pages/ListBox/ListBox';
-import BalanceForm from '../../../Components/Bills/Dashboard/balanceForm';
+import BalanceForm from '../balances/balanceForm/balanceForm';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const [listBoxItems, setListBoxItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [listBoxLoaded, setListBoxLoaded] = useState(false);
-  const [buttonVisible, setButtonVisible] = useState(false);
   const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
   const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     refreshListBoxItems();
@@ -38,10 +38,6 @@ const Dashboard = () => {
         setIsSessionModalOpen(true);
       });
   };
-
-  useEffect(() => {
-    setButtonVisible(!!selectedItem);
-  }, [selectedItem]);
 
   const handleRevenuesClick = () => {
     if (selectedItem) {
@@ -80,6 +76,9 @@ const Dashboard = () => {
     navigate('/signin');
   };
 
+  // Determine if the Edit/Delete buttons should be hidden
+  const hideEditDeleteButtons = location.pathname === '/dashboard';
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-content-container">
@@ -92,17 +91,42 @@ const Dashboard = () => {
           />
         )}
         {selectedItem && (
-          <MonthyList selectedItem={selectedItem} />
+          <MonthyList
+            selectedItem={selectedItem}
+            hideEditDeleteButtons={hideEditDeleteButtons}  // Pass the prop here
+          />
         )}
       </div>
-      {buttonVisible && (
-        <div className="dashboard-button-container">
-          <button onClick={handleRevenuesClick} className="dashboard-button">Go to Revenues</button>
-          <button onClick={handleExpensesClick} className="dashboard-button">Go to Expenses</button>
-          <button onClick={handleBalancesClick} className="dashboard-button">Go to Balances</button>
-          <button onClick={openBalanceModal} className="add-dashboard-button">+</button>
-        </div>
-      )}
+      <div className="dashboard-button-container">
+        <button
+          onClick={handleRevenuesClick}
+          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
+          disabled={!selectedItem}
+        >
+          Revenues
+        </button>
+        <button
+          onClick={handleExpensesClick}
+          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
+          disabled={!selectedItem}
+        >
+          Expenses
+        </button>
+        <button
+          onClick={handleBalancesClick}
+          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
+          disabled={!selectedItem}
+        >
+          Balances
+        </button>
+        <button
+          onClick={openBalanceModal}
+          className={`add-dashboard-button ${!selectedItem ? 'disabled' : ''}`}
+          disabled={!selectedItem}
+        >
+          +
+        </button>
+      </div>
 
       <Modal
         isOpen={isSessionModalOpen}
