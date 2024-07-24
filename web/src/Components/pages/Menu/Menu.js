@@ -51,7 +51,7 @@ const AccountMenu = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userResponse'); // Remover dados do usuário ao fazer logout
-    navigate('/dashboard');
+    navigate('/signin');
   };
 
   return (
