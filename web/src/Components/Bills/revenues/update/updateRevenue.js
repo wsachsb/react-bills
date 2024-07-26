@@ -2,6 +2,7 @@ import api from "../../../../services/api";
 
 const updateRevenue = async (updatedRevenue) => {
     try {
+        console.log("updatedRevenue : " + JSON.stringify(updatedRevenue));
         const data = {
             nomeReceita: updatedRevenue.nomeReceita,
             valor: updatedRevenue.valor,
@@ -10,7 +11,7 @@ const updateRevenue = async (updatedRevenue) => {
             mesId: updatedRevenue.mesid,
             yearId: updatedRevenue.year
         }
-        const response = await api.post(`/revenues/update/${updatedRevenue.id}`, data);
+        const response = await api.put(`/revenues/update/${updatedRevenue.id}`, data);
         return response.data;
     } catch (error) {
         console.error('Erro ao atualizar receita:', error);
