@@ -2,7 +2,7 @@ import api from "../../../../services/api";
 
 const deleteExpense = async (id) => {
     try {
-        await api.post(`/expenses/remove/${id}`, {
+        await api.delete(`/expenses/remove/${id}`, {
         });
     } catch (error) {
         console.error('Erro ao deletar expense: ', error);

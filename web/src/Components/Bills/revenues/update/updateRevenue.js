@@ -2,7 +2,6 @@ import api from "../../../../services/api";
 
 const updateRevenue = async (updatedRevenue) => {
     try {
-        console.log("updatedRevenue : " + JSON.stringify(updatedRevenue));
         const data = {
             nomeReceita: updatedRevenue.nomeReceita,
             valor: updatedRevenue.valor,

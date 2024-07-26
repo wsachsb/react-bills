@@ -25,7 +25,6 @@ const SummaryCard = ({ summaryItem, refreshList, hideEditDeleteButtons }) => {
   const handleConfirmDelete = async () => {
     try {
       await deleteBalance(summaryItem.id);
-      console.log('Item deletado:', summaryItem);
       if (refreshList) {
         refreshList();
       }

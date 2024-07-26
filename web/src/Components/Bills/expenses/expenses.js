@@ -20,7 +20,6 @@ const Expenses = () => {
                 .then((response) => {
                     setSummaryList(response.data.content || []);
                     setCountResults(response.data.totalElements || 0);
-                    console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
                     navigate('/dashboard');
@@ -45,7 +44,6 @@ const Expenses = () => {
                 .then((response) => {
                     setSummaryList(response.data.content || []);
                     setCountResults(response.data.totalElements || 0);
-                    console.log("expenses: " + JSON.stringify(response.data.content));
                 })
                 .catch((error) => {
                     navigate('/dashboard');

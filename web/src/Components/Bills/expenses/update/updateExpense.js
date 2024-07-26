@@ -12,9 +12,7 @@ const updateExpense = async (updatedExpense) => {
             mesId: updatedExpense.mesid,
             yearId: updatedExpense.year
         };
-        console.log("updatedExpense: " + JSON.stringify(updatedExpense));
-        console.log("Data: " + JSON.stringify(data));
-        const response = await api.post(`/expenses/update/${updatedExpense.id}`, data);
+        const response = await api.put(`/expenses/update/${updatedExpense.id}`, data);
         return response.data;
     } catch (error) {
         console.error('Erro ao atualizar despesa:', error);

@@ -20,7 +20,6 @@ const EditRevenueForm = ({ revenue, closeModal, refreshList }) => {
 
         try {
             await updateRevenue(updatedRevenue);
-            console.log("Revenue Save refreshList: " + JSON.stringify(refreshList));
             if (refreshList) {
                 refreshList();
             }

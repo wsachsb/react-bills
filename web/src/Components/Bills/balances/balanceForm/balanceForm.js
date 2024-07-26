@@ -43,7 +43,6 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newItem = { mesid: balanceData.month, year: balanceData.year };
-    console.log("Selected newItem:", JSON.stringify(newItem));
     setSubmittedItem(newItem);
     if (onBalanceSubmit) {
       onBalanceSubmit(newItem);
