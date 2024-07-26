@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const user = JSON.parse(localStorage.getItem('userResponse'));
 
   useEffect(() => {
     refreshListBoxItems();
@@ -32,6 +33,7 @@ const Dashboard = () => {
           const parsedItem = JSON.parse(savedSelectedItem);
           setSelectedItem(parsedItem);
         }
+        console.log("userResponse: " + JSON.stringify(user));
       })
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
@@ -83,7 +85,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-content-container">
-        <h1>Bem-vindo(a) ao Dashboard!</h1>
+        <h1>Bem-vindo(a) {user.firstName} </h1>
         {listBoxLoaded && (
           <ListBox
             items={listBoxItems}
