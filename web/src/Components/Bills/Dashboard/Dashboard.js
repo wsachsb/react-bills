@@ -33,7 +33,6 @@ const Dashboard = () => {
           const parsedItem = JSON.parse(savedSelectedItem);
           setSelectedItem(parsedItem);
         }
-        console.log("userResponse: " + JSON.stringify(user));
       })
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
