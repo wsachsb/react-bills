@@ -56,10 +56,14 @@ const BalanceChart = ({ summaryItem }) => {
   const renderTooltipContent = ({ payload }) => {
     if (!payload || payload.length === 0) return null;
 
-    const { name, value, percentage } = payload[0].payload;
+    const { name, value, percentage, fill } = payload[0].payload;
     return (
       <div className="custom-tooltip">
-        <p className="tooltip-text">{`${name}: ${formatCurrency(value)} (${percentage}%)`}</p>
+        <p className="tooltip-text">
+          <span className="tooltip-label">{name}:</span><br />
+          <span className="tooltip-value">{formatCurrency(value)}</span><br />
+          <span className="tooltip-percentage" style={{ color: fill }}>({percentage}%)</span>
+        </p>
       </div>
     );
   };

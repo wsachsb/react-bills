@@ -58,6 +58,23 @@
   font-weight: normal;
 }
 
+.tooltip-text {
+  margin: 0;
+  font-weight: normal;
+}
+
+.tooltip-label {
+  font-weight: bold;
+}
+
+.tooltip-value {
+  font-weight: normal;
+}
+
+.tooltip-percentage {
+  font-weight: bold;
+}
+
 .recharts-legend {
   font-size: 14px;
   margin-top: 10px;
