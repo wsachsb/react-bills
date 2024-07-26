@@ -36,6 +36,7 @@ const Dashboard = () => {
       .catch(error => {
         console.error('There was an error fetching the list box items!', error);
         setIsSessionModalOpen(true);
+        navigate('/signin');
       });
   };
 

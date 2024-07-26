@@ -49,8 +49,8 @@ const AccountMenu = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userResponse'); // Remover dados do usuário ao fazer logout
+    localStorage.removeItem("@bills-Token");
+    //localStorage.removeItem('userResponse');
     navigate('/signin');
   };
 
