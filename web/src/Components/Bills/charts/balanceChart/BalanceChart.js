@@ -19,14 +19,14 @@ const calculatePercentage = (value, total) => {
 };
 
 const BalanceChart = ({ summaryItem }) => {
-  if (!summaryItem || (summaryItem.totalReceitas == null && summaryItem.totalDespesas == null)) {
-    return null;
+  if (!summaryItem) {
+    return <div className="balance-chart__no-data">Nenhum dado disponível</div>;
   }
 
-  const total = summaryItem.totalReceitas + summaryItem.totalDespesas;
+  const total = (summaryItem.totalReceitas || 0) + (summaryItem.totalDespesas || 0);
   const data = [
-    { name: 'Receitas', value: summaryItem.totalReceitas, percentage: calculatePercentage(summaryItem.totalReceitas, total) },
-    { name: 'Despesas', value: summaryItem.totalDespesas, percentage: calculatePercentage(summaryItem.totalDespesas, total) },
+    { name: 'Receitas', value: summaryItem.totalReceitas || 0, percentage: calculatePercentage(summaryItem.totalReceitas, total) },
+    { name: 'Despesas', value: summaryItem.totalDespesas || 0, percentage: calculatePercentage(summaryItem.totalDespesas, total) },
   ];
 
   // Ordenar os dados para que o maior valor venha primeiro
@@ -67,9 +67,18 @@ const BalanceChart = ({ summaryItem }) => {
   return (
     <div className="balance-chart">
       <h3 className="balance-chart__title">
-        <span className="title-label">Resumo mês:</span> {summaryItem.mes} <br />
-        <span className="title-label">Receitas:</span> {formatCurrency(summaryItem.totalReceitas)} <span className="title-percentage">({data[0].percentage}%)</span> <br />
-        <span className="title-label">Despesas:</span> {formatCurrency(summaryItem.totalDespesas)} <span className="title-percentage">({data[1].percentage}%)</span>
+        <div className="title-row">
+          <span className="title-label">Resumo mês:</span>
+          <span className="title-value">{summaryItem.mes}</span>
+        </div>
+        <div className="title-row">
+          <span className="title-label">Receitas:</span>
+          <span className="title-value">{formatCurrency(summaryItem.totalReceitas)} <span className="title-percentage">({data[0].percentage}%)</span></span>
+        </div>
+        <div className="title-row">
+          <span className="title-label">Despesas:</span>
+          <span className="title-value">{formatCurrency(summaryItem.totalDespesas)} <span className="title-percentage">({data[1].percentage}%)</span></span>
+        </div>
       </h3>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
         <PieChart width={400} height={400}> {/* Reduzir o tamanho do gráfico */}
@@ -91,9 +100,9 @@ const BalanceChart = ({ summaryItem }) => {
           </Pie>
           <Tooltip content={renderTooltipContent} />
           <Legend
-            layout="radial"
-            align="right"
-            verticalAlign="top"
+            layout="horizontal"
+            align="center"
+            verticalAlign="bottom"
           />
         </PieChart>
       </div>

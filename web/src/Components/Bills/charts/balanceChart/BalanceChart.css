@@ -13,13 +13,32 @@
   color: #333;
 }
 
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px; /* Aumentar a largura máxima */
+  margin: 5px 0;
+}
+
 .title-label {
   font-weight: bold;
+  flex: 0 0 130px; /* Definir uma largura fixa maior para as labels */
+  text-align: left;
+}
+
+.title-value {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  flex: 1;
+  text-align: right;
 }
 
 .title-percentage {
   font-weight: bold;
   color: #007bff;
+  margin-left: 5px;
 }
 
 .custom-tooltip {
@@ -50,4 +69,11 @@
 
 .recharts-legend-item text {
   font-size: 14px;
+}
+
+.balance-chart__no-data {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin: 20px 0;
 }
