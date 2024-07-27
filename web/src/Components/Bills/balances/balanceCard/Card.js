@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Card.css';
+import deleteBalance from '../balanceDelete/balanceDelete';
+import Modal from 'react-modal';
 
 const formatCurrency = (value) => {
   if (value == null) {
@@ -8,15 +10,29 @@ const formatCurrency = (value) => {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 
-const SummaryCard = ({ summaryItem }) => {
+const SummaryCard = ({ summaryItem, refreshList, hideEditDeleteButtons }) => {
+  const [showConfirm, setShowConfirm] = useState(false);
+
   const handleEdit = () => {
     // Implementar a lógica de edição aqui
     console.log('Editar item:', summaryItem);
   };
 
   const handleDelete = () => {
-    // Implementar a lógica de exclusão aqui
-    console.log('Deletar item:', summaryItem);
+    setShowConfirm(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteBalance(summaryItem.id);
+      if (refreshList) {
+        refreshList();
+      }
+    } catch (error) {
+      console.error('Erro ao deletar o item:', error.message);
+    } finally {
+      setShowConfirm(false);
+    }
   };
 
   return (
@@ -53,10 +69,28 @@ const SummaryCard = ({ summaryItem }) => {
         </div>
       </div>
 
-      <div className="button-container">
-        <button className="edit-button" onClick={handleEdit}>Editar</button>
-        <button className="delete-button" onClick={handleDelete}>Deletar</button>
-      </div>
+      {!hideEditDeleteButtons && (
+        <div className="button-container">
+          <button className="edit-button" onClick={handleEdit}>Editar</button>
+          <button className="delete-button" onClick={handleDelete}>Deletar</button>
+        </div>
+      )}
+
+      {showConfirm && (
+        <Modal
+          isOpen={showConfirm}
+          onRequestClose={() => setShowConfirm(false)}
+          className="confirm-modal"
+          overlayClassName="modal-background"
+          ariaHideApp={false}
+        >
+          <div>
+            <p>Deseja deletar esse registro?</p>
+            <button className="confirm-yes" onClick={handleConfirmDelete}>Sim</button>
+            <button className="confirm-no" onClick={() => setShowConfirm(false)}>Não</button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

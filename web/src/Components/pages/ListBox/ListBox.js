@@ -7,7 +7,7 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
     if (selectedItem) {
       setValue(selectedItem.id.toString());
     } else {
-      setValue(""); // Garantir que o valor vazio é selecionado inicialmente se não houver item selecionado
+      setValue("");
     }
   }, [selectedItem]);
 
@@ -27,7 +27,7 @@ const ListBox = ({ items, selectedItem, onItemSelected }) => {
   };
 
   return (
-    <div>
+    <div className="listbox-container">
       <select 
         className='dashboard-select'
         onChange={handleChange}

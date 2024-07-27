@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import deleteRevenue from '../delete/deleteRevenue';
-import EditRevenueForm from '../update/EditRevenueForm';
+import updateRevenue from '../update/updateRevenue';
 import './revenuesCard.css';
 
 const formatCurrency = (value) => {
@@ -10,9 +11,17 @@ const formatCurrency = (value) => {
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 
-const RevenueCard = ({ summaryItem, refreshList }) => {
+const RevenueCard = ({ summaryItem, selectedItem, refreshList }) => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
+    const [editValues, setEditValues] = useState({
+        nomeReceita: summaryItem.nomeReceita,
+        valor: summaryItem.valor,
+        dtrecebimento: summaryItem.dtrecebimento,
+        observacoes: summaryItem.observacoes,
+    });
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleDelete = () => {
         setShowConfirm(true);
@@ -35,15 +44,63 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
         setIsEditing(true);
     };
 
-    const handleCloseEditForm = () => {
-        setIsEditing(false);
+    const handleSave = async () => {
+        try {
+            await updateRevenue({
+                ...summaryItem,
+                ...selectedItem,
+                ...editValues,
+            });
+            setModalMessage("Atualizado com sucesso!");
+            setShowModal(true);
+            if (refreshList) {
+                refreshList();
+            }
+            setIsEditing(false); // Finaliza o modo de edição após salvar
+        } catch (error) {
+            console.error('Erro ao atualizar receita:', error);
+            setModalMessage("Erro ao atualizar receita.");
+            setShowModal(true);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setEditValues({
+            ...editValues,
+            [name]: value,
+        });
+    };
+
+    const handleCancelEdit = () => {
+        // Resetar os valores de edição para os originais
+        setEditValues({
+            nomeReceita: summaryItem.nomeReceita,
+            valor: summaryItem.valor,
+            dtrecebimento: summaryItem.dtrecebimento,
+            observacoes: summaryItem.observacoes,
+        });
+        setIsEditing(false); // Finaliza o modo de edição sem salvar
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     return (
         <div className="promotion-card">
             <div className="button-container">
-                <button className="edit-button" onClick={handleEdit}>Editar</button>
-                <button className="delete-button" onClick={handleDelete}>Excluir</button>
+                {isEditing ? (
+                    <React.Fragment>
+                        <button className="save-button" onClick={handleSave}>Salvar</button>
+                        <button className="cancel-button" onClick={handleCancelEdit}>Cancelar</button>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <button className="edit-button" onClick={handleEdit}>Editar</button>
+                        <button className="delete-button" onClick={handleDelete}>Excluir</button>
+                    </React.Fragment>
+                )}
             </div>
             <div className="card-content">
                 <div className="field-container">
@@ -51,28 +108,40 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                     <input
                         className="promotion-card__info"
                         type="text"
-                        defaultValue={summaryItem.nomeReceita}
+                        name="nomeReceita"
+                        value={isEditing ? editValues.nomeReceita : summaryItem.nomeReceita}
+                        onChange={handleChange}
+                        readOnly={!isEditing}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Valor à receber:</label>
                     <input
                         type="text"
-                        defaultValue={formatCurrency(summaryItem.valor)}
+                        name="valor"
+                        value={isEditing ? editValues.valor : formatCurrency(summaryItem.valor)}
+                        onChange={handleChange}
+                        readOnly={!isEditing}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Data à receber:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.dtrecebimento}
+                        name="dtrecebimento"
+                        value={isEditing ? editValues.dtrecebimento : summaryItem.dtrecebimento}
+                        onChange={handleChange}
+                        readOnly={!isEditing}
                     />
                 </div>
                 <div className="field-container">
                     <label className="field-label">Observações:</label>
                     <input
                         type="text"
-                        defaultValue={summaryItem.observacoes}
+                        name="observacoes"
+                        value={isEditing ? editValues.observacoes : summaryItem.observacoes}
+                        onChange={handleChange}
+                        readOnly={!isEditing}
                     />
                 </div>
             </div>
@@ -83,13 +152,18 @@ const RevenueCard = ({ summaryItem, refreshList }) => {
                     <button className="confirm-no" onClick={() => setShowConfirm(false)}>Não</button>
                 </div>
             )}
-            {isEditing && (
-                <EditRevenueForm
-                    revenue={summaryItem}
-                    closeModal={handleCloseEditForm}
-                    refreshList={refreshList}
-                />
-            )}
+            <Modal
+                isOpen={showModal}
+                onRequestClose={closeModal}
+                className="modal-revenue"
+                overlayClassName="modal-background"
+                ariaHideApp={false}
+            >
+                <div>
+                    <p>{modalMessage}</p>
+                    <button className="modal-button" onClick={closeModal}>OK</button>
+                </div>
+            </Modal>
         </div>
     );
 };

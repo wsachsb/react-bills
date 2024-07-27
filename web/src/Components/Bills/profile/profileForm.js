@@ -45,7 +45,6 @@ const ProfileForm = ({ profile }) => {
       };
 
       await updateProfile(data);
-      console.log('Profile updated');
       setIsEditing(false);
     } catch (error) {
       console.error('There was an error', error.message);

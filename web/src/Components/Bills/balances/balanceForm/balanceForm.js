@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importar useNavigate
-import { getMonths } from '../../../Components/Bills/MonthlyBase/Monthy';
-import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
+import { getMonths } from '../../MonthlyBase/Monthy';
+import MonthyList from '../../MonthlyBase/MonthyList';
 import './balanceForm.css';
 
 const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
@@ -43,7 +43,6 @@ const BalanceForm = ({ closeModal, onBalanceSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newItem = { mesid: balanceData.month, year: balanceData.year };
-    console.log("Selected newItem:", JSON.stringify(newItem));
     setSubmittedItem(newItem);
     if (onBalanceSubmit) {
       onBalanceSubmit(newItem);

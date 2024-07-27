@@ -1,0 +1,96 @@
+.balance-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.balance-chart__title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #333;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px; /* Aumentar a largura máxima */
+  margin: 5px 0;
+}
+
+.title-label {
+  font-weight: bold;
+  flex: 0 0 130px; /* Definir uma largura fixa maior para as labels */
+  text-align: left;
+}
+
+.title-value {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  flex: 1;
+  text-align: right;
+}
+
+.title-percentage {
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 5px;
+}
+
+.custom-tooltip {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #333;
+  max-width: 200px;
+  text-align: left;
+}
+
+.custom-tooltip p {
+  margin: 0;
+  font-weight: normal;
+}
+
+.tooltip-text {
+  margin: 0;
+  font-weight: normal;
+}
+
+.tooltip-label {
+  font-weight: bold;
+}
+
+.tooltip-value {
+  font-weight: normal;
+}
+
+.tooltip-percentage {
+  font-weight: bold;
+}
+
+.recharts-legend {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.recharts-legend-item {
+  margin-bottom: 2px;
+}
+
+.recharts-legend-item text {
+  font-size: 14px;
+}
+
+.balance-chart__no-data {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin: 20px 0;
+}

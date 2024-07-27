@@ -1,18 +1,32 @@
+/* Ajustes gerais de estilo */
 .dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  min-height: 90vh;
+  padding: 10px;
   box-sizing: border-box;
 }
 
 .dashboard-content-container {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Aumentar a margem inferior */
   width: 100%;
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centralizar o conteúdo */
 }
 
+/* Estilo do título principal */
+.dashboard-content-container h1 {
+  font-size: 2.5rem; /* Ajusta o tamanho da fonte */
+  font-weight: bold; /* Define a fonte como negrito */
+  color: #333; /* Cor do texto */
+  margin-bottom: 10px; /* Reduz o espaçamento inferior */
+  text-align: center; /* Alinha o texto ao centro */
+}
+
+/* Estilo dos botões */
 .dashboard-button {
   padding: 10px 20px;
   background-color: #007bff;
@@ -33,9 +47,9 @@
 .dashboard-button-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 15px; /* Aumentar o espaço entre os botões */
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Aumentar a margem inferior */
 }
 
 .dashboard-footer {
@@ -46,15 +60,50 @@
   margin-top: auto;
 }
 
+/* Estilo do ListBox */
 .dashboard-select {
-  width: 20%;
-  padding: 5px;
+  width: 200px; /* Aumentar a largura do select */
+  padding: 10px; /* Aumentar o preenchimento para maior conforto */
   margin-top: 5px;
   margin-bottom: 15px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 2px solid #007bff; /* Borda colorida */
+  font-size: 16px; /* Aumentar o tamanho da fonte */
+  background-color: #f9f9f9; /* Cor de fundo leve */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Efeito suave ao focar */
+  text-align: center; /* Centralizar o texto */
+  position: relative; /* Necessário para posicionar a seta personalizada */
 }
 
+/* Cor da borda ao focar */
+.dashboard-select:focus {
+  border-color: #0056b3; /* Cor da borda ao focar */
+  outline: none; /* Remove a borda padrão */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+}
+
+/* Aumentar a sombra do ListBox ao passar o mouse */
+.dashboard-select:hover {
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Sombra mais pronunciada ao passar o mouse */
+}
+
+/* Ajustar a seta do ListBox */
+.dashboard-select::-ms-expand {
+  display: none; /* Ocultar a seta padrão no Internet Explorer */
+}
+
+/* Adiciona a seta personalizada */
+.dashboard-select::after {
+  content: '▼'; /* Adicionar seta personalizada */
+  position: absolute;
+  right: 10px; /* Ajustar a posição da seta */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #007bff; /* Cor da seta */
+  pointer-events: none;
+}
+
+/* Estilo das Modais */
 .modal-overlay {
   background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
@@ -138,4 +187,11 @@
 
 .add-dashboard-button:hover {
   background-color: #0056b3;
+}
+
+.dashboard-button-container .dashboard-button.disabled,
+.dashboard-button-container .add-dashboard-button.disabled {
+  background-color: grey;
+  color: #ccc;
+  cursor: not-allowed;
 }

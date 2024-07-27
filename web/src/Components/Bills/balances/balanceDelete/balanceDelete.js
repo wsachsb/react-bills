@@ -1,8 +1,8 @@
 import api from "../../../../services/api";
 
-const deleteExpense = async (id) => {
+const balanceDelete = async (id) => {
     try {
-        await api.delete(`/expenses/remove/${id}`, {
+        const response = await api.delete(`/balance/remove/${id}`, {
         });
     } catch (error) {
         console.error('Erro ao deletar expense: ', error);
@@ -10,4 +10,4 @@ const deleteExpense = async (id) => {
     }
 };
 
-export default deleteExpense;
+export default balanceDelete;

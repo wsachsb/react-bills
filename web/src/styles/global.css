@@ -22,6 +22,12 @@ body, html {
   height: 100%;
   width: 100%;
   color: var(--text-color);
+  overflow: hidden; /* Evita rolagem desnecessária */
+}
+
+#root {
+  height: 100%;
+  overflow: auto; /* Permite rolagem dentro do contêiner principal */
 }
 
 button {
@@ -31,16 +37,18 @@ button {
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 button:hover {
-  background-color: darken(var(--primary-color), 10%); /* Aplicando um tom mais escuro do azul */
+  background-color: #004085; /* Aplicando um tom mais escuro do azul */
 }
 
 a {
   color: var(--secondary-color);
+  text-decoration: none;
 }
 
 a:hover {
-  color: darken(var(--secondary-color), 10%); /* Aplicando um tom mais escuro do azul secundário */
+  color: #0056b3; /* Aplicando um tom mais escuro do azul secundário */
 }

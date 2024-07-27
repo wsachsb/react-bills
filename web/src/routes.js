@@ -17,11 +17,7 @@ const AppRoutes = () => (
     <RouterRoutes>
       <Route path="/"
         element={
-          <PrivateRoute>
-            <Layout>
-              <DashboardMainDashboard />
-            </Layout>
-          </PrivateRoute>
+          <SignIn />
         }
       />
       <Route path="/signin" element={<SignIn />} />
