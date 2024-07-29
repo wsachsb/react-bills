@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../../assets/bills-logo.svg";
+import Logo from "../../../assets/login/login.svg";
 import api from "../../../services/api";
 import { login } from "../../../services/auth";
 import { Form, Container } from "./styles";
@@ -13,6 +13,22 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { setUserResponse } = useContext(UserContext);
 
+  useEffect(() => {
+    // Define o título da aba
+    document.title = "My Finances";
+
+    // Cria e adiciona o ícone
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = "./favicon.ico"; // Substitua pelo caminho do seu favicon
+    document.head.appendChild(link);
+
+    // Cleanup function to remove the link element
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   const handleSignIn = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -20,8 +36,8 @@ const SignIn = () => {
     } else {
       try {
         let data = {
-          "userName": email,
-          "password": password
+          userName: email,
+          password: password,
         };
 
         let header = {
@@ -30,15 +46,15 @@ const SignIn = () => {
             "Cookie": this.sessionid,
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-          }
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept, charset, boundary, Content-Length",
+          },
         };
 
-        const response = await api.post("/auth", data, header);       
+        const response = await api.post("/auth", data, header);
         login(response.data.token);
-        
+
         // Armazenar os dados do usuário no localStorage
-        localStorage.setItem('userResponse', JSON.stringify(response.data.userResponse));
+        localStorage.setItem("userResponse", JSON.stringify(response.data.userResponse));
 
         // Atualizar o contexto do usuário
         setUserResponse(response.data.userResponse);
