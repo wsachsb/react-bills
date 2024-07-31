@@ -18,19 +18,23 @@ const calculatePercentage = (value, total) => {
   return total ? ((value / total) * 100).toFixed(2) : '0.00';
 };
 
-const ExpensesChart = ({ summaryItem }) => {
-  if (!summaryItem) {
+const ExpensesChart = ({ summaryItem, expenses }) => {
+  console.log("expensesDataChart: " + JSON.stringify(expenses));
+
+  if (!summaryItem || !Array.isArray(expenses) || expenses.length === 0) {
     return <div className="balance-chart__no-data">Nenhum dado disponível</div>;
   }
 
-  const total = (summaryItem.totalReceitas || 0) + (summaryItem.totalDespesas || 0);
-  const data = [
-    { name: 'Receitas', value: summaryItem.totalReceitas || 0, percentage: calculatePercentage(summaryItem.totalReceitas, total) },
-    { name: 'Despesas', value: summaryItem.totalDespesas || 0, percentage: calculatePercentage(summaryItem.totalDespesas, total) },
-  ];
+  // Filtra e mapeia os dados necessários para o gráfico
+  const data = expenses.map(item => ({
+    name: item.nomeConta,
+    value: item.valor,
+  }));
 
-  // Ordenar os dados para que o maior valor venha primeiro
+  // Ordena os dados por valor em ordem decrescente
   data.sort((a, b) => b.value - a.value);
+
+  const total = data.reduce((sum, entry) => sum + entry.value, 0);
 
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
@@ -48,7 +52,7 @@ const ExpensesChart = ({ summaryItem }) => {
         fontSize={12} // Reduzir o tamanho da fonte para 12px
         fontWeight="bold" // Deixar em negrito
       >
-        {`${data[index].percentage}%`}
+        {`${calculatePercentage(data[index].value, total)}%`}
       </text>
     );
   };
@@ -56,32 +60,24 @@ const ExpensesChart = ({ summaryItem }) => {
   const renderTooltipContent = ({ payload }) => {
     if (!payload || payload.length === 0) return null;
 
-    const { name, value, percentage, fill } = payload[0].payload;
+    const { name, value, fill } = payload[0].payload;
     return (
       <div className="custom-tooltip">
         <p className="tooltip-text">
           <span className="tooltip-label">{name}:</span><br />
           <span className="tooltip-value">{formatCurrency(value)}</span><br />
-          <span className="tooltip-percentage" style={{ color: fill }}>({percentage}%)</span>
+          <span className="tooltip-percentage" style={{ color: fill }}>({calculatePercentage(value, total)}%)</span>
         </p>
       </div>
     );
   };
 
   return (
-    <div className="balance-chart">
-      <h3 className="balance-chart__title">
+    <div className="expenses-chart">
+      <h3 className="expenses-chart__title">
         <div className="title-row">
-          <span className="title-label">Resumo mês:</span>
-          <span className="title-value">{summaryItem.mes}</span>
-        </div>
-        <div className="title-row">
-          <span className="title-label">Receitas:</span>
-          <span className="title-value">{formatCurrency(summaryItem.totalReceitas)} <span className="title-percentage">({data[0].percentage}%)</span></span>
-        </div>
-        <div className="title-row">
-          <span className="title-label">Despesas:</span>
-          <span className="title-value">{formatCurrency(summaryItem.totalDespesas)} <span className="title-percentage">({data[1].percentage}%)</span></span>
+          <span className="title-label">Qtd de Despesas:</span>
+          <span className="title-value">{data.length}</span>
         </div>
       </h3>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>

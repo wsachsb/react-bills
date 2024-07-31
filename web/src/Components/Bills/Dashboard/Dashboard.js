@@ -77,7 +77,16 @@ const Dashboard = () => {
         )}
       </div>
 
-      <button className="add-dashboard-button" onClick={openBalanceModal}>+</button>
+      <div className="tooltip-container">
+        <button
+          className="add-dashboard-button"
+          onClick={openBalanceModal}
+        >
+          +
+        </button>
+        <div className="tooltip">Criar no Balance</div>
+      </div>
+
 
       <Modal
         isOpen={isSessionModalOpen}

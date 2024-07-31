@@ -1,3 +1,4 @@
+/* Contêiner principal para os gráficos */
 .charts-container {
     display: flex;
     flex-direction: column;
@@ -12,6 +13,7 @@
     width: 100%;
 }
 
+/* Títulos dos gráficos */
 .chart-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -21,7 +23,7 @@
 
 .dashboard-button {
     margin: 20px 0 20px 0;
-    /* Adiciona margem entre o botão e o próximo título */
+    /* Margem entre o botão e o título do gráfico */
 }
 
 @media (min-width: 768px) {
@@ -33,24 +35,25 @@
 
     .chart-item {
         width: 30%;
+        /* Largura padrão para os gráficos no desktop */
         margin: auto;
+    }
+
+    .revenues-chart-item {
+        width: 25%; /* Reduzido para destacar o gráfico de balanço */
+    }
+
+    .balance-chart-item {
+        width: 40%; /* Tamanho maior para destacar */
+    }
+
+    .expenses-chart-item {
+        width: 25%; /* Reduzido para destacar o gráfico de balanço */
     }
 
     .dashboard-button {
         margin: 10px 0 0 0;
         /* Remove a margem inferior no layout desktop */
-    }
-
-    .revenues-chart-item {
-        order: 1;
-    }
-
-    .balance-chart-item {
-        order: 2;
-    }
-
-    .expenses-chart-item {
-        order: 3;
     }
 }
 

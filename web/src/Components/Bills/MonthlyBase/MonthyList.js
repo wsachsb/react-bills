@@ -8,6 +8,8 @@ import "./MonthyList.css";
 
 const MonthyList = ({ selectedItem }) => {
   const [summaryList, setSummaryList] = useState([]);
+  const [revenuesData, setRevenuesData] = useState([]);
+  const [expensesData, setExpensesData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,8 +22,26 @@ const MonthyList = ({ selectedItem }) => {
         .catch((error) => {
           navigate('/dashboard');
         });
+
+      api.get(`/revenues/list/mes/${mesid}&${year}`)
+        .then((response) => {
+          setRevenuesData(response.data.content);
+        })
+        .catch((error) => {
+          navigate('/dashboard');
+        });
+
+      api.get(`/expenses/list/mes/${mesid}&${year}`)
+        .then((response) => {
+          setExpensesData(response.data.content);
+        })
+        .catch((error) => {
+          navigate('/dashboard');
+        });
     } else {
       setSummaryList([]);
+      setRevenuesData([]);
+      setExpensesData([]);
     }
   }, [selectedItem, navigate]);
 
@@ -53,22 +73,22 @@ const MonthyList = ({ selectedItem }) => {
     <div className="charts-container">
       {summaryList.map((summaryItem) => (
         <div key={summaryItem.id} className="chart-item revenues-chart-item">
-          <div className="chart-title">RevenuesChart</div>
-          <RevenuesChart summaryItem={summaryItem} />
+          <div className="chart-title">Receitas</div>
+          <RevenuesChart summaryItem={summaryItem} revenues={revenuesData} />
           <button onClick={handleRevenuesClick} className="dashboard-button">Revenues</button>
         </div>
       ))}
       {summaryList.map((summaryItem) => (
         <div key={summaryItem.id} className="chart-item balance-chart-item">
-          <div className="chart-title">BalanceChart</div>
+          <div className="chart-title">Balanço</div>
           <BalanceChart summaryItem={summaryItem} />
           <button onClick={handleBalancesClick} className="dashboard-button">Balances</button>
         </div>
       ))}
       {summaryList.map((summaryItem) => (
         <div key={summaryItem.id} className="chart-item expenses-chart-item">
-          <div className="chart-title">ExpensesChart</div>
-          <ExpensesChart summaryItem={summaryItem} />
+          <div className="chart-title">Despesas</div>
+          <ExpensesChart summaryItem={summaryItem} expenses={expensesData} />
           <button onClick={handleExpensesClick} className="dashboard-button">Expenses</button>
         </div>
       ))}
