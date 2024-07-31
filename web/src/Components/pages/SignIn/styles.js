@@ -1,5 +1,3 @@
-// SignIn/styles.js
-
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -7,28 +5,35 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: #f0f2f5; /* Fundo claro */
 `;
 
 export const Form = styled.form`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   background: #fff;
-  padding: 20px;
+  padding: 40px 30px;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 20px; /* Margem lateral para responsividade */
 
   img {
-    width: 100px;
-    margin: 10px 0 40px;
+    width: 150px; /* Tamanho maior da imagem */
+    margin: 0 0 30px;
   }
 
   p {
-    color: #ff3333;
+    color: #ff4d4f;
     margin-bottom: 15px;
-    border: 1px solid #ff3333;
+    border: 1px solid #ff4d4f;
     padding: 10px;
     width: 100%;
     text-align: center;
+    border-radius: 5px; /* Bordas arredondadas para a mensagem de erro */
+    background: #fff1f0; /* Fundo claro para a mensagem de erro */
   }
 
   input {
@@ -36,29 +41,42 @@ export const Form = styled.form`
     height: 46px;
     margin-bottom: 15px;
     padding: 0 20px;
-    color: #777;
+    color: #333;
     font-size: 15px;
     width: 100%;
     border: 1px solid #ddd;
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &::placeholder {
       color: #999;
+    }
+
+    &:focus {
+      border-color: #007bff; /* Cor de foco */
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Sombra de foco */
     }
   }
 
   button {
     color: #fff;
     font-size: 16px;
-    background: #0056b3; /* Cor primária do botão */
+    background: #007bff; /* Cor primária do botão */
     height: 56px;
     border: 0;
-    border-radius: 5px;
+    border-radius: 5px; /* Bordas arredondadas */
     width: 100%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 
     &:hover {
-      background: #004494; /* Cor de hover mais escura */
+      background: #0056b3; /* Cor de hover mais escura */
+      transform: translateY(-2px); /* Animação de elevação ao passar o mouse */
+    }
+
+    &:active {
+      background: #004494; /* Cor mais escura ao clicar */
+      transform: translateY(0); /* Reseta a animação de elevação */
     }
   }
 
@@ -78,6 +96,16 @@ export const Form = styled.form`
 
     &:hover {
       color: #0056b3; /* Cor do link ao passar o mouse */
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 15px; /* Reduzindo o padding em telas menores */
+    img {
+      width: 100px; /* Tamanho menor da imagem em telas menores */
+    }
+    button {
+      height: 46px; /* Reduzindo a altura do botão em telas menores */
     }
   }
 `;

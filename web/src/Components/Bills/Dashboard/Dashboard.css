@@ -9,24 +9,22 @@
 }
 
 .dashboard-content-container {
-  margin-bottom: 20px; /* Aumentar a margem inferior */
+  margin-bottom: 20px;
   width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centralizar o conteúdo */
+  align-items: center;
 }
 
-/* Estilo do título principal */
 .dashboard-content-container h1 {
-  font-size: 2.5rem; /* Ajusta o tamanho da fonte */
-  font-weight: bold; /* Define a fonte como negrito */
-  color: #333; /* Cor do texto */
-  margin-bottom: 10px; /* Reduz o espaçamento inferior */
-  text-align: center; /* Alinha o texto ao centro */
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-/* Estilo dos botões */
 .dashboard-button {
   padding: 10px 20px;
   background-color: #007bff;
@@ -47,9 +45,9 @@
 .dashboard-button-container {
   display: flex;
   flex-direction: row;
-  gap: 15px; /* Aumentar o espaço entre os botões */
+  gap: 15px;
   justify-content: center;
-  margin-bottom: 20px; /* Aumentar a margem inferior */
+  margin-bottom: 20px;
 }
 
 .dashboard-footer {
@@ -62,44 +60,40 @@
 
 /* Estilo do ListBox */
 .dashboard-select {
-  width: 200px; /* Aumentar a largura do select */
-  padding: 10px; /* Aumentar o preenchimento para maior conforto */
+  width: 200px;
+  padding: 10px;
   margin-top: 5px;
   margin-bottom: 15px;
   border-radius: 4px;
-  border: 2px solid #007bff; /* Borda colorida */
-  font-size: 16px; /* Aumentar o tamanho da fonte */
-  background-color: #f9f9f9; /* Cor de fundo leve */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Efeito suave ao focar */
-  text-align: center; /* Centralizar o texto */
-  position: relative; /* Necessário para posicionar a seta personalizada */
+  border: 2px solid #007bff;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
 }
 
-/* Cor da borda ao focar */
 .dashboard-select:focus {
-  border-color: #0056b3; /* Cor da borda ao focar */
-  outline: none; /* Remove a borda padrão */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+  border-color: #0056b3;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Aumentar a sombra do ListBox ao passar o mouse */
 .dashboard-select:hover {
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Sombra mais pronunciada ao passar o mouse */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
 
-/* Ajustar a seta do ListBox */
 .dashboard-select::-ms-expand {
-  display: none; /* Ocultar a seta padrão no Internet Explorer */
+  display: none;
 }
 
-/* Adiciona a seta personalizada */
 .dashboard-select::after {
-  content: '▼'; /* Adicionar seta personalizada */
+  content: '▼';
   position: absolute;
-  right: 10px; /* Ajustar a posição da seta */
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #007bff; /* Cor da seta */
+  color: #007bff;
   pointer-events: none;
 }
 
@@ -194,4 +188,54 @@
   background-color: grey;
   color: #ccc;
   cursor: not-allowed;
+}
+
+/* Container do Tooltip */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo do Tooltip */
+.tooltip {
+  visibility: hidden;
+  width: 140px;
+  /* Largura do tooltip */
+  background-color: #555;
+  /* Cor de fundo do tooltip */
+  color: #fff;
+  /* Cor do texto */
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 10px;
+  /* Preenchimento do tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* Ajuste a posição vertical do tooltip */
+  left: 50%;
+  /* Ajuste a posição horizontal para o centro */
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  /* Tamanho da fonte do tooltip */
+}
+
+/* Mostrar Tooltip ao passar o mouse */
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilo adicional para telas maiores (desktop) */
+@media (min-width: 768px) {
+  .tooltip-container .tooltip {
+    left: 100%;
+    bottom: auto;
+    /* Ajustar a posição horizontal para o lado direito do botão */
+    margin-left: 10px;
+    /* Espaço entre o botão e o tooltip */
+    transform: translateX(0);
+  }
 }

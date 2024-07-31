@@ -1,0 +1,72 @@
+/* Contêiner principal para os gráficos */
+.charts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
+/* Títulos dos gráficos */
+.chart-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dashboard-button {
+    margin: 20px 0 20px 0;
+    /* Margem entre o botão e o título do gráfico */
+}
+
+@media (min-width: 768px) {
+    .charts-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .chart-item {
+        width: 30%;
+        /* Largura padrão para os gráficos no desktop */
+        margin: auto;
+    }
+
+    .revenues-chart-item {
+        width: 25%; /* Reduzido para destacar o gráfico de balanço */
+    }
+
+    .balance-chart-item {
+        width: 40%; /* Tamanho maior para destacar */
+    }
+
+    .expenses-chart-item {
+        width: 25%; /* Reduzido para destacar o gráfico de balanço */
+    }
+
+    .dashboard-button {
+        margin: 10px 0 0 0;
+        /* Remove a margem inferior no layout desktop */
+    }
+}
+
+@media (max-width: 767px) {
+    .balance-chart-item {
+        order: 1;
+    }
+
+    .revenues-chart-item {
+        order: 2;
+    }
+
+    .expenses-chart-item {
+        order: 3;
+    }
+}
