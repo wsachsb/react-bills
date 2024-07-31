@@ -1,0 +1,69 @@
+.charts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
+.chart-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dashboard-button {
+    margin: 20px 0 20px 0;
+    /* Adiciona margem entre o botão e o próximo título */
+}
+
+@media (min-width: 768px) {
+    .charts-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .chart-item {
+        width: 30%;
+        margin: auto;
+    }
+
+    .dashboard-button {
+        margin: 10px 0 0 0;
+        /* Remove a margem inferior no layout desktop */
+    }
+
+    .revenues-chart-item {
+        order: 1;
+    }
+
+    .balance-chart-item {
+        order: 2;
+    }
+
+    .expenses-chart-item {
+        order: 3;
+    }
+}
+
+@media (max-width: 767px) {
+    .balance-chart-item {
+        order: 1;
+    }
+
+    .revenues-chart-item {
+        order: 2;
+    }
+
+    .expenses-chart-item {
+        order: 3;
+    }
+}

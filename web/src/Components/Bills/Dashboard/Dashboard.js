@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import api from "../../../services/api";
 import MonthyList from '../../../Components/Bills/MonthlyBase/MonthyList';
@@ -14,7 +14,6 @@ const Dashboard = () => {
   const [isSessionModalOpen, setIsSessionModalOpen] = useState(false);
   const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const user = JSON.parse(localStorage.getItem('userResponse'));
 
   useEffect(() => {
@@ -41,22 +40,6 @@ const Dashboard = () => {
       });
   };
 
-  const handleRevenuesClick = () => {
-    if (selectedItem) {
-      navigate(`/revenues`, {
-        state: { selectedItem }
-      });
-    }
-  };
-
-  const handleExpensesClick = () => {
-    if (selectedItem) {
-      navigate(`/expenses`, {
-        state: { selectedItem }
-      });
-    }
-  };
-
   const handleBalancesClick = () => {
     if (selectedItem) {
       navigate(`/balances`, {
@@ -78,13 +61,10 @@ const Dashboard = () => {
     navigate('/signin');
   };
 
-  // Determine if the Edit/Delete buttons should be hidden
-  const hideEditDeleteButtons = location.pathname === '/dashboard';
-
   return (
     <div className="dashboard-container">
       <div className="dashboard-content-container">
-        <h1>Bem-vindo(a) {user.firstName} </h1>
+        <h1>Bem-vindo(a) {user.firstName}</h1>
         {listBoxLoaded && (
           <ListBox
             items={listBoxItems}
@@ -93,42 +73,11 @@ const Dashboard = () => {
           />
         )}
         {selectedItem && (
-          <MonthyList
-            selectedItem={selectedItem}
-            hideEditDeleteButtons={hideEditDeleteButtons}  // Pass the prop here
-          />
+          <MonthyList selectedItem={selectedItem} />
         )}
       </div>
-      <div className="dashboard-button-container">
-        <button
-          onClick={handleRevenuesClick}
-          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
-          disabled={!selectedItem}
-        >
-          Revenues
-        </button>
-        <button
-          onClick={handleExpensesClick}
-          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
-          disabled={!selectedItem}
-        >
-          Expenses
-        </button>
-        <button
-          onClick={handleBalancesClick}
-          className={`dashboard-button ${!selectedItem ? 'disabled' : ''}`}
-          disabled={!selectedItem}
-        >
-          Balances
-        </button>
-        <button
-          onClick={openBalanceModal}
-          className={`add-dashboard-button ${!selectedItem ? 'disabled' : ''}`}
-          disabled={!selectedItem}
-        >
-          +
-        </button>
-      </div>
+
+      <button className="add-dashboard-button" onClick={openBalanceModal}>+</button>
 
       <Modal
         isOpen={isSessionModalOpen}
